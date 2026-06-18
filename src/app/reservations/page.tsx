@@ -18,12 +18,19 @@ function formatTime(t: string) {
   return `${h > 12 ? h - 12 : h}:${String(m).padStart(2,'0')} ${ampm}`
 }
 
+const SEATING = [
+  { key: 'indoor', label: 'Indoor', sub: 'Climate-controlled' },
+  { key: 'outdoor', label: 'Outdoor', sub: 'Seasonal terrace' },
+  { key: 'bar', label: 'Bar', sub: 'Counter seating' },
+]
+
 export default function ReservationsPage() {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [selTime, setSelTime] = useState('')
   const [selSeating, setSelSeating] = useState('indoor')
+  const [focused, setFocused] = useState<string | null>(null)
 
   const today = new Date().toISOString().split('T')[0]
 
@@ -45,90 +52,176 @@ export default function ReservationsPage() {
     setLoading(false)
   }
 
-  const inputStyle = { width: '100%', padding: '12px 16px', border: '2px solid #e8e0d5', borderRadius: '8px', fontSize: '15px', outline: 'none', fontFamily: 'inherit' }
-  const labelStyle = { display: 'block', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '1px', marginBottom: '6px', color: '#555' }
+  const fieldStyle = (name: string) => ({
+    width: '100%',
+    padding: '0 0 14px',
+    border: 'none',
+    borderBottom: `1.5px solid ${focused === name ? '#1a1a1a' : '#e8e0d5'}`,
+    fontSize: '16px',
+    color: '#1a1a1a',
+    background: 'transparent',
+    outline: 'none',
+    fontFamily: "'DM Sans', sans-serif",
+    transition: 'border-color 0.2s',
+  })
+
+  const labelStyle = (name: string) => ({
+    display: 'block',
+    fontSize: '10px',
+    fontWeight: 700 as const,
+    letterSpacing: '2.5px',
+    textTransform: 'uppercase' as const,
+    color: focused === name ? '#1a1a1a' : '#bbb',
+    marginBottom: '10px',
+    transition: 'color 0.2s',
+  })
 
   return (
     <>
       <TopBar />
-      <main style={{ paddingTop: '110px' }}>
-        <div style={{ background: '#f9f5f0', padding: '60px 0' }}>
-          <div className="container">
-            <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: '2.8rem', color: '#1a1a1a' }}>Reserve a Table</h1>
-            <p style={{ color: '#888', marginTop: '8px' }}>For parties of 8+, please call +1 (514) 555-0192</p>
-          </div>
-        </div>
+      <main style={{ paddingTop: '110px', background: '#fff' }}>
 
-        <div className="container" style={{ paddingTop: '48px', paddingBottom: '80px', maxWidth: '700px' }}>
+        {/* HERO */}
+        <section style={{ borderBottom: '1px solid #e8e0d5', padding: '72px 0 60px', position: 'relative', overflow: 'hidden' }}>
+          <div style={{
+            position: 'absolute', right: '-20px', top: '-30px',
+            fontFamily: "'Playfair Display', serif",
+            fontSize: 'clamp(160px, 22vw, 300px)',
+            fontWeight: 900, color: 'transparent',
+            WebkitTextStroke: '1px #e8e0d5',
+            lineHeight: 1, userSelect: 'none', pointerEvents: 'none',
+          }}>06</div>
+          <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 40px' }}>
+            <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '20px' }}>Reservations</p>
+            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, color: '#1a1a1a', lineHeight: 1.05, letterSpacing: '-0.02em', maxWidth: '700px' }}>
+              Your evening<br />
+              <em style={{ color: '#e85d04', fontStyle: 'italic' }}>starts here.</em>
+            </h1>
+            <p style={{ marginTop: '28px', fontSize: '16px', color: '#888', maxWidth: '420px', lineHeight: 1.7 }}>
+              For parties of 8 or more, call us directly at <span style={{ color: '#1a1a1a', fontWeight: 500 }}>+1 (514) 555-0192</span>
+            </p>
+          </div>
+        </section>
+
+        {/* FORM */}
+        <div style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 40px 100px' }}>
+
           {success ? (
-            <div style={{ background: '#d4edda', border: '1px solid #c3e6cb', borderRadius: '12px', padding: '40px', textAlign: 'center' }}>
-              <div style={{ fontSize: '3rem', marginBottom: '12px' }}>🎉</div>
-              <h2 style={{ fontFamily: "'Playfair Display',serif", color: '#1a1a1a', marginBottom: '8px' }}>Table Reserved!</h2>
-              <p style={{ color: '#555' }}>A confirmation has been sent to your email.</p>
-              <Link href="/menu" style={{ display: 'inline-block', marginTop: '20px', background: '#e85d04', color: '#fff', padding: '12px 28px', borderRadius: '8px', fontWeight: 700 }}>Browse Our Menu</Link>
+            <div style={{ borderLeft: '3px solid #1a1a1a', paddingLeft: '32px' }}>
+              <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#bbb', marginBottom: '20px' }}>Confirmed</p>
+              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '12px', lineHeight: 1.2 }}>Your table is reserved.</p>
+              <p style={{ fontSize: '15px', color: '#888', lineHeight: 1.7, marginBottom: '32px' }}>A confirmation has been sent to your email. We look forward to hosting you.</p>
+              <Link href="/menu" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: '#1a1a1a', color: '#fff', padding: '16px 36px', fontSize: '12px', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+                Browse the menu →
+              </Link>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              {error && <div style={{ background: '#f8d7da', borderRadius: '8px', padding: '16px', color: '#721c24' }}>{error}</div>}
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
+              {error && (
+                <div style={{ borderLeft: '3px solid #e85d04', paddingLeft: '20px', marginBottom: '40px' }}>
+                  <p style={{ fontSize: '14px', color: '#e85d04' }}>{error}</p>
+                </div>
+              )}
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              {/* Date + Party Size */}
+              <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#bbb', marginBottom: '32px' }}>When & how many</p>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginBottom: '56px' }}>
                 <div>
-                  <label style={labelStyle}>Date *</label>
-                  <input name="date" type="date" required min={today} style={inputStyle} />
+                  <label style={labelStyle('date')}>Date</label>
+                  <input name="date" type="date" required min={today}
+                    onFocus={() => setFocused('date')} onBlur={() => setFocused(null)}
+                    style={fieldStyle('date')}
+                  />
                 </div>
                 <div>
-                  <label style={labelStyle}>Party Size *</label>
-                  <select name="party_size" required style={{ ...inputStyle, background: '#fff' }}>
+                  <label style={labelStyle('party_size')}>Party size</label>
+                  <select name="party_size" required
+                    onFocus={() => setFocused('party_size')} onBlur={() => setFocused(null)}
+                    style={{ ...fieldStyle('party_size'), appearance: 'none', WebkitAppearance: 'none', cursor: 'pointer', backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23bbb' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center', paddingRight: '24px' }}
+                  >
                     <option value="">— Select —</option>
-                    {Array.from({ length: 20 }, (_, i) => i + 1).map(n => (
+                    {Array.from({ length: 7 }, (_, i) => i + 1).map(n => (
                       <option key={n} value={n}>{n} Guest{n > 1 ? 's' : ''}</option>
                     ))}
                   </select>
                 </div>
               </div>
 
-              <div>
-                <label style={labelStyle}>Time *</label>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                  {TIME_SLOTS.map(t => (
-                    <button
-                      key={t} type="button"
-                      onClick={() => setSelTime(t)}
-                      style={{ padding: '8px 16px', borderRadius: '6px', border: `2px solid ${selTime===t?'#e85d04':'#e8e0d5'}`, background: selTime===t?'#e85d04':'#fff', color: selTime===t?'#fff':'#333', fontWeight: 600, cursor: 'pointer', fontSize: '13px' }}
-                    >
-                      {formatTime(t)}
-                    </button>
-                  ))}
-                </div>
+              {/* Time */}
+              <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#bbb', marginBottom: '20px' }}>Select a time</p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '56px' }}>
+                {TIME_SLOTS.map(t => (
+                  <button
+                    key={t} type="button"
+                    onClick={() => setSelTime(t)}
+                    style={{
+                      padding: '10px 18px',
+                      border: `1.5px solid ${selTime === t ? '#1a1a1a' : '#e8e0d5'}`,
+                      background: selTime === t ? '#1a1a1a' : 'transparent',
+                      color: selTime === t ? '#fff' : '#888',
+                      fontSize: '13px',
+                      fontWeight: 500,
+                      cursor: 'pointer',
+                      fontFamily: "'DM Sans', sans-serif",
+                      letterSpacing: '0.5px',
+                      transition: 'all 0.15s',
+                    }}
+                  >{formatTime(t)}</button>
+                ))}
               </div>
 
-              <div>
-                <label style={labelStyle}>Seating</label>
-                <div style={{ display: 'flex', gap: '12px' }}>
-                  {[['indoor','🏠','Indoor'],['outdoor','🌿','Outdoor'],['bar','🍸','Bar']].map(([k,icon,lbl]) => (
-                    <div
-                      key={k}
-                      onClick={() => setSelSeating(k)}
-                      style={{ flex: 1, padding: '16px', border: `2px solid ${selSeating===k?'#e85d04':'#e8e0d5'}`, borderRadius: '10px', textAlign: 'center', cursor: 'pointer', background: selSeating===k?'rgba(232,93,4,0.05)':'#fff' }}
-                    >
-                      <div style={{ fontSize: '1.5rem' }}>{icon}</div>
-                      <div style={{ fontSize: '13px', fontWeight: 700, marginTop: '4px' }}>{lbl}</div>
-                    </div>
-                  ))}
-                </div>
+              {/* Seating */}
+              <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#bbb', marginBottom: '20px' }}>Seating preference</p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '56px' }}>
+                {SEATING.map(({ key, label, sub }) => (
+                  <div
+                    key={key}
+                    onClick={() => setSelSeating(key)}
+                    style={{
+                      padding: '24px 16px',
+                      border: `1.5px solid ${selSeating === key ? '#1a1a1a' : '#e8e0d5'}`,
+                      background: selSeating === key ? '#1a1a1a' : 'transparent',
+                      cursor: 'pointer',
+                      textAlign: 'center',
+                      transition: 'all 0.15s',
+                    }}
+                  >
+                    <div style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.5px', color: selSeating === key ? '#fff' : '#1a1a1a', marginBottom: '4px' }}>{label}</div>
+                    <div style={{ fontSize: '11px', color: selSeating === key ? 'rgba(255,255,255,0.6)' : '#bbb' }}>{sub}</div>
+                  </div>
+                ))}
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                <div><label style={labelStyle}>Name *</label><input name="name" required style={inputStyle} /></div>
-                <div><label style={labelStyle}>Email *</label><input name="email" type="email" required style={inputStyle} /></div>
+              {/* Contact */}
+              <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#bbb', marginBottom: '32px' }}>Your details</p>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginBottom: '40px' }}>
+                <div>
+                  <label style={labelStyle('name')}>Full name</label>
+                  <input name="name" required onFocus={() => setFocused('name')} onBlur={() => setFocused(null)} style={fieldStyle('name')} />
+                </div>
+                <div>
+                  <label style={labelStyle('email')}>Email address</label>
+                  <input name="email" type="email" required onFocus={() => setFocused('email')} onBlur={() => setFocused(null)} style={fieldStyle('email')} />
+                </div>
               </div>
-              <div><label style={labelStyle}>Phone</label><input name="phone" style={inputStyle} /></div>
-              <div>
-                <label style={labelStyle}>Special Requests</label>
-                <textarea name="notes" rows={3} style={{ ...inputStyle, resize: 'vertical' }} placeholder="Allergies, celebrations, accessibility needs..." />
+              <div style={{ marginBottom: '40px' }}>
+                <label style={labelStyle('phone')}>Phone</label>
+                <input name="phone" onFocus={() => setFocused('phone')} onBlur={() => setFocused(null)} style={fieldStyle('phone')} />
               </div>
-              <button type="submit" disabled={loading} style={{ background: '#e85d04', color: '#fff', padding: '16px', border: 'none', borderRadius: '8px', fontSize: '16px', fontWeight: 700, cursor: 'pointer' }}>
-                {loading ? 'Reserving...' : 'Confirm Reservation →'}
+              <div style={{ marginBottom: '56px' }}>
+                <label style={labelStyle('notes')}>Special requests</label>
+                <textarea name="notes" rows={4} placeholder="Allergies, celebrations, accessibility needs…"
+                  onFocus={() => setFocused('notes')} onBlur={() => setFocused(null)}
+                  style={{ ...fieldStyle('notes'), resize: 'none', lineHeight: 1.7 }}
+                />
+              </div>
+
+              <button type="submit" disabled={loading}
+                style={{ alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: '12px', background: '#1a1a1a', color: '#fff', padding: '18px 48px', border: 'none', fontSize: '13px', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: "'DM Sans', sans-serif", opacity: loading ? 0.6 : 1, transition: 'background 0.2s' }}
+                onMouseEnter={e => { if (!loading) e.currentTarget.style.background = '#e85d04' }}
+                onMouseLeave={e => { e.currentTarget.style.background = '#1a1a1a' }}
+              >
+                {loading ? 'Reserving' : 'Confirm reservation'} <span style={{ fontSize: '18px' }}>→</span>
               </button>
             </form>
           )}
