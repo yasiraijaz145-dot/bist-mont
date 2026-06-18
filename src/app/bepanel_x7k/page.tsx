@@ -1,79 +1,133 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getDB } from '@/lib/db'
 
-// Simple token check — reads from env so the secret never lives in code
-function isAuthorized(req: NextRequest) {
-  // The client-side panel handles auth itself (sessionStorage).
-  // For a real deployment, add a server-side secret header check here.
+type StatsRow = {
+  total: number
+  unread: number
+  today: number
+}
+
+type SubmissionRow = {
+  id: number
+  name: string
+  email: string
+  phone: string | null
+  message: string
+  is_read: number
+  created_at: string
+}
+
+// NOTE: still placeholder auth (you can improve later)
+function isAuthorized(_req: NextRequest) {
   return true
 }
 
 export async function GET(req: NextRequest) {
   try {
+    if (!isAuthorized(req)) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
     const db = getDB()
 
-    // Ensure column exists (idempotent)
-    await db.execute(`
-      ALTER TABLE contact_submissions
-      ADD COLUMN IF NOT EXISTS is_read TINYINT(1) NOT NULL DEFAULT 0
-    `).catch(() => {})
+    // safer: ignore error if column exists
+    try {
+      await db.execute(`
+        ALTER TABLE contact_submissions
+        ADD COLUMN is_read TINYINT(1) NOT NULL DEFAULT 0
+      `)
+    } catch {}
 
-    const [statRow] = await db.execute(`
+    const [statResult] = (await db.execute(`
       SELECT
         COUNT(*) AS total,
         SUM(is_read = 0) AS unread,
         SUM(DATE(created_at) = CURDATE()) AS today
       FROM contact_submissions
-    `) as any[]
+    `)) as any
 
-    const [rows] = await db.execute(
-      `SELECT id, name, email, phone, message, is_read, created_at
-       FROM contact_submissions
-       ORDER BY created_at DESC
-       LIMIT 200`
-    ) as any[]
+    const stats: StatsRow = statResult?.[0] ?? {
+      total: 0,
+      unread: 0,
+      today: 0,
+    }
+
+    const [rowsResult] = (await db.execute(`
+      SELECT id, name, email, phone, message, is_read, created_at
+      FROM contact_submissions
+      ORDER BY created_at DESC
+      LIMIT 200
+    `)) as any
+
+    const submissions: SubmissionRow[] = rowsResult ?? []
 
     return NextResponse.json({
-      stats: {
-        total:  Number(statRow[0]?.total  ?? 0),
-        unread: Number(statRow[0]?.unread ?? 0),
-        today:  Number(statRow[0]?.today  ?? 0),
-      },
-      submissions: rows,
+      stats,
+      submissions,
     })
   } catch (e: any) {
-    return NextResponse.json({ error: e.message }, { status: 500 })
+    return NextResponse.json(
+      { error: e?.message ?? 'Server error' },
+      { status: 500 }
+    )
   }
 }
 
 export async function PATCH(req: NextRequest) {
   try {
+    if (!isAuthorized(req)) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
     const body = await req.json()
-    const db   = getDB()
+    const db = getDB()
 
     if (body.markAllRead) {
       await db.execute('UPDATE contact_submissions SET is_read = 1')
     } else {
-      const id     = parseInt(body.id)
-      const isRead = body.is_read === 1 ? 1 : 0
+      const id = Number(body.id)
+      const isRead = body.is_read ? 1 : 0
+
+      if (!id) {
+        return NextResponse.json({ error: 'Invalid ID' }, { status: 400 })
+      }
+
       await db.execute(
         'UPDATE contact_submissions SET is_read = ? WHERE id = ?',
         [isRead, id]
       )
     }
+
     return NextResponse.json({ ok: true })
   } catch (e: any) {
-    return NextResponse.json({ error: e.message }, { status: 500 })
+    return NextResponse.json(
+      { error: e?.message ?? 'Server error' },
+      { status: 500 }
+    )
   }
 }
 
 export async function DELETE(req: NextRequest) {
   try {
-    const { id } = await req.json()
+    if (!isAuthorized(req)) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    const body = await req.json()
+    const id = Number(body.id)
+
+    if (!id) {
+      return NextResponse.json({ error: 'Invalid ID' }, { status: 400 })
+    }
+
     const db = getDB()
-    await db.execute('DELETE FROM contact_submissions WHERE id = ?', [parseInt(id)])
+    await db.execute('DELETE FROM contact_submissions WHERE id = ?', [id])
+
     return NextResponse.json({ ok: true })
   } catch (e: any) {
-    return NextResponse.json({ error: e.message }, { status: 500 })
+    return NextResponse.json(
+      { error: e?.message ?? 'Server error' },
+      { status: 500 }
+    )
   }
 }
