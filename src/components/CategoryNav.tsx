@@ -1,182 +1,179 @@
 'use client'
-import { useEffect, useState, useRef } from 'react'
- 
-const CAT_ICONS: Record<string, string> = {
-  starters: 'https://images.unsplash.com/photo-1541014741259-de529411b96a?w=120&q=80',
-  mains:    'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=120&q=80',
-  burgers:  'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=120&q=80',
-  pizza:    'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=120&q=80',
-  pasta:    'https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=120&q=80',
-  salads:   'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=120&q=80',
-  desserts: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=120&q=80',
-  drinks:   'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=120&q=80',
-  specials: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=120&q=80',
+import { useState, useEffect, useCallback, useRef } from 'react'
+
+type Slide = {
+  bg: string
+  img: string
+  tag: string
+  title: string
+  sub: string
+  item: string
+  link: string
 }
- 
-export default function CategoryNav({
-  categories,
-  labels,
-}: {
-  categories: string[]
-  labels: Record<string, string>
-}) {
-  const [active, setActive] = useState(categories[0] ?? '')
-  const navRef = useRef<HTMLDivElement>(null)
- 
-  // Scroll-spy: highlight active category as user scrolls
+
+export default function HeroSlider({ slides }: { slides: Slide[] }) {
+  const [current, setCurrent] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const total = slides.length
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const goTo = useCallback((n: number) => {
+    setCurrent(((n % total) + total) % total)
+  }, [total])
+
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const id = entry.target.id.replace('cat-', '')
-            setActive(id)
-          }
-        }
-      },
-      { rootMargin: '-30% 0px -60% 0px' }
-    )
-    categories.forEach((cat) => {
-      const el = document.getElementById(`cat-${cat}`)
-      if (el) observer.observe(el)
-    })
-    return () => observer.disconnect()
-  }, [categories])
- 
-  // Auto-scroll the nav pill into view when active changes
-  useEffect(() => {
-    const nav  = navRef.current
-    const pill = nav?.querySelector(`[data-cat="${active}"]`) as HTMLElement | null
-    if (nav && pill) {
-      const navLeft   = nav.scrollLeft
-      const navRight  = navLeft + nav.clientWidth
-      const pillLeft  = pill.offsetLeft
-      const pillRight = pillLeft + pill.offsetWidth
-      if (pillLeft < navLeft + 16)       nav.scrollTo({ left: pillLeft - 16, behavior: 'smooth' })
-      else if (pillRight > navRight - 16) nav.scrollTo({ left: pillRight - nav.clientWidth + 16, behavior: 'smooth' })
+    if (paused) {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+      return
     }
-  }, [active])
- 
-  function scrollTo(cat: string) {
-    setActive(cat)
-    const el = document.getElementById(`cat-${cat}`)
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 200
-      window.scrollTo({ top, behavior: 'smooth' })
-    }
-  }
- 
+    intervalRef.current = setInterval(() => {
+      setCurrent(c => ((c + 1) % total))
+    }, 4000)
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
+  }, [paused, total])
+
   return (
-    <>
-      <style>{`
-        .icon-cat-nav {
-          position: sticky;
-          top: 110px;
-          z-index: 900;
-          background: #ffffff;
-          border-bottom: 1px solid #f0e8df;
-          box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-        }
-        .icon-cat-nav-inner {
-          display: flex;
-          align-items: stretch;
-          overflow-x: auto;
-          scrollbar-width: none;
-          max-width: 1280px;
-          margin: 0 auto;
-          padding: 0 8px;
-          gap: 2px;
-        }
-        .icon-cat-nav-inner::-webkit-scrollbar { display: none; }
- 
-        .icon-cat-pill {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 7px;
-          padding: 14px 18px 10px;
-          cursor: pointer;
-          border: none;
-          background: none;
-          min-width: 80px;
-          position: relative;
-          border-bottom: 3px solid transparent;
-          transition: border-color 0.2s;
-          text-decoration: none;
-          flex-shrink: 0;
-        }
-        .icon-cat-pill:hover .pill-img-wrap {
-          background: #fff2e8;
-          transform: scale(1.05);
-        }
-        .icon-cat-pill.active {
-          border-bottom-color: #e85d04;
-        }
-        .icon-cat-pill.active .pill-img-wrap {
-          background: #fff2e8;
-          outline: 2.5px solid #e85d04;
-          outline-offset: 2px;
-        }
-        .icon-cat-pill.active .pill-label {
-          color: #e85d04;
-          font-weight: 700;
-        }
-        .pill-img-wrap {
-          width: 58px;
-          height: 58px;
-          border-radius: 16px;
-          overflow: hidden;
-          background: #f5ede6;
-          transition: background 0.2s, transform 0.2s, outline 0.15s;
-          flex-shrink: 0;
-        }
-        .pill-img-wrap img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-        }
-        .pill-label {
-          font-size: 11px;
-          font-weight: 600;
-          color: #666;
-          letter-spacing: 0.3px;
-          white-space: nowrap;
-          text-align: center;
-          transition: color 0.2s;
-          text-transform: none;
-        }
- 
-        @media (max-width: 600px) {
-          .icon-cat-pill { min-width: 66px; padding: 10px 10px 8px; }
-          .pill-img-wrap { width: 48px; height: 48px; border-radius: 12px; }
-          .pill-label { font-size: 10px; }
-        }
-      `}</style>
- 
-      <nav className="icon-cat-nav" aria-label="Menu categories">
-        <div className="icon-cat-nav-inner" ref={navRef}>
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              data-cat={cat}
-              className={`icon-cat-pill${active === cat ? ' active' : ''}`}
-              onClick={() => scrollTo(cat)}
-              aria-label={`Jump to ${labels[cat] ?? cat}`}
+    <section
+      className="hero-slider"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      aria-label="Featured dishes slideshow"
+    >
+      <div
+        className="hero-slides"
+        style={{ transform: `translateX(-${current * (100 / total)}%)` }}
+      >
+        {slides.map((slide, i) => (
+          <div
+            key={i}
+            className="hero-slide"
+            onClick={() => window.location.href = slide.link}
+            aria-label={`${slide.item} — ${slide.sub}`}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={slide.img} alt={slide.item} />
+            <div
+              className="hero-slide-content"
+              style={{ background: `linear-gradient(to right, ${slide.bg}ee 35%, ${slide.bg}88 60%, transparent 85%)` }}
             >
-              <div className="pill-img-wrap">
-                <img
-                  src={CAT_ICONS[cat] ?? 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=120&q=80'}
-                  alt=""
-                  loading="lazy"
-                />
+              <div className="slide-tag">{slide.tag}</div>
+              <h2>{slide.title.split('\n').map((line, j) => (
+                <span key={j}>{line}<br /></span>
+              ))}</h2>
+              <p className="slide-sub">{slide.sub}</p>
+
+              {/* CTA buttons on slide */}
+              <div style={{ display: 'flex', gap: '12px', marginTop: '24px', flexWrap: 'wrap' }}>
+                <a
+                  href="/reservations"
+                  onClick={e => e.stopPropagation()}
+                  style={{
+                    display: 'inline-block',
+                    background: '#fff',
+                    color: '#1a1a1a',
+                    padding: '12px 24px',
+                    fontSize: '12px',
+                    fontWeight: 800,
+                    letterSpacing: '1px',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    borderRadius: '4px',
+                  }}
+                >
+                  Reserve a Table
+                </a>
+                <a
+                  href="/menu"
+                  onClick={e => e.stopPropagation()}
+                  style={{
+                    display: 'inline-block',
+                    background: 'transparent',
+                    color: '#fff',
+                    padding: '12px 24px',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    letterSpacing: '1px',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    borderRadius: '4px',
+                    border: '2px solid rgba(255,255,255,0.6)',
+                  }}
+                >
+                  View Menu
+                </a>
               </div>
-              <span className="pill-label">{labels[cat] ?? cat}</span>
-            </button>
-          ))}
-        </div>
-      </nav>
-    </>
+
+              <div className="slide-name">{slide.item}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Prev / Next */}
+      <button
+        className="slider-arrow prev"
+        onClick={() => goTo(current - 1)}
+        aria-label="Previous slide"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
+      <button
+        className="slider-arrow next"
+        onClick={() => goTo(current + 1)}
+        aria-label="Next slide"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
+
+      {/* Dots + pause */}
+      <div className="slider-dots">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            className={`slider-dot${i === current ? ' active' : ''}`}
+            onClick={() => goTo(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            aria-current={i === current}
+          />
+        ))}
+
+        {/* Pause / Play button — WCAG 2.2 requirement for auto-playing content */}
+        <button
+          onClick={() => setPaused(p => !p)}
+          aria-label={paused ? 'Play slideshow' : 'Pause slideshow'}
+          style={{
+            width: '28px',
+            height: '8px',
+            borderRadius: '4px',
+            background: 'rgba(255,255,255,0.4)',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '0',
+            marginLeft: '4px',
+            flexShrink: 0,
+          }}
+        >
+          {paused ? (
+            /* Play icon */
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff">
+              <polygon points="5,3 19,12 5,21"/>
+            </svg>
+          ) : (
+            /* Pause icon */
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff">
+              <rect x="6" y="4" width="4" height="16"/>
+              <rect x="14" y="4" width="4" height="16"/>
+            </svg>
+          )}
+        </button>
+      </div>
+    </section>
   )
 }
- 
