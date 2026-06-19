@@ -932,3 +932,41 @@ ul { list-style: none; }
   .skel-trust { flex-wrap: wrap; }
   .skel-nav   { display: none; }
 }
+
+/* ===== Mobile responsiveness ===== */
+
+@media (max-width: 768px) {
+  .container, main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  h1 { font-size: 1.8rem !important; }
+  h2 { font-size: 1.4rem !important; }
+  h3 { font-size: 1.15rem !important; }
+
+  /* Stack any flex/grid rows into single columns on tablets/phones */
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .flex-row {
+    flex-direction: column !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 0.95rem;
+  }
+
+  button, input, select, textarea {
+    font-size: 0.95rem !important;
+  }
+
+  /* Prevent horizontal scroll from oversized elements */
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+}
