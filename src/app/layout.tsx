@@ -4,8 +4,21 @@ import { CartProvider } from '@/context/CartContext'
 import SkeletonScreen from '@/components/SkeletonScreen'
 
 export const metadata: Metadata = {
-  title: 'Bistro Montréal — Fine Dining',
-  description: 'French-inspired cuisine crafted from the finest local Québec ingredients.',
+  title: {
+    default: 'Bistro Montréal — Fine Dining',
+    template: '%s | Bistro Montréal',
+  },
+  description: 'French-inspired cuisine crafted from the finest local Québec ingredients. Fine dining in the heart of Montréal since 2009.',
+  openGraph: {
+    siteName: 'Bistro Montréal',
+    type: 'website',
+    locale: 'en_CA',
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

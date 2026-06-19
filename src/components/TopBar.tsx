@@ -8,15 +8,14 @@ export default function TopBar() {
   const pathname = usePathname()
   const { cartCount, openCart } = useCart()
 
-  const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/menu', label: 'Menu' },
-    { href: '/about', label: 'About' },
-    { href: '/reservations', label: 'Reservations' },
-    { href: '/contact', label: 'Contact' },
-    { href: '/cart', label: '🛒 Cart' },
-    { href: '/track', label: 'Track Order' },
-  ]
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/menu', label: 'Menu' },
+  { href: '/about', label: 'About' },
+  { href: '/reservations', label: 'Reservations' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/track', label: 'Track Order' },
+]
 
   return (
     <>
@@ -45,12 +44,12 @@ export default function TopBar() {
 
           {/* Right: phone + cart */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <div className="top-bar-phone">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.1 2.26 2 2 0 012.11.08h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.08 6.08l1-1a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.03z"/>
-              </svg>
-              +1 (514) 555-0192
-            </div>
+            <a href="tel:+15145550192" className="top-bar-phone" style={{ textDecoration: 'none', color: 'inherit' }}>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.1 2.26 2 2 0 012.11.08h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.08 6.08l1-1a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.03z"/>
+  </svg>
+  +1 (514) 555-0192
+</a>
             <button className="top-bar-cart" onClick={openCart} aria-label="Cart">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                 <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>

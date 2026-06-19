@@ -1,18 +1,16 @@
 import { getDB, MenuItem } from '@/lib/db'
 import TopBar from '@/components/TopBar'
 import Footer from '@/components/Footer'
-import MenuSection from '@/components/MenuSection'
-import ToastContainer from '@/components/Toast'
 import CategoryNav from '@/components/CategoryNav'
- 
+import MenuClient from './MenuClient'
+
 const CATEGORIES = ['starters','mains','burgers','pizza','pasta','salads','desserts','drinks','specials']
 const CAT_LABELS: Record<string,string> = {
   starters:'Starters', mains:'Mains', burgers:'Burgers',
   pizza:'Pizza', pasta:'Pasta', salads:'Salads',
   desserts:'Desserts', drinks:'Drinks', specials:'Specials'
 }
- 
-// Fallback mock data so the menu always shows something even without a DB
+
 const MOCK_ITEMS: MenuItem[] = [
   { id:1, name:'Foie Gras Torchon', description:'Silky duck liver torchon, Sauternes gelee, brioche toast, fleur de sel', price:18, category:'starters', image_url:'https://images.unsplash.com/photo-1572441713132-c542fc4fe282?w=600&q=80', tags:'chefs-pick', is_available:1, is_featured:1, sort_order:1 },
   { id:2, name:'Soupe à l\'Oignon', description:'Classic French onion soup, Gruyère crust, house-baked crouton', price:14, category:'starters', image_url:'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80', tags:'', is_available:1, is_featured:0, sort_order:2 },
@@ -35,7 +33,7 @@ const MOCK_ITEMS: MenuItem[] = [
   { id:19, name:'Vin Rouge Maison', description:'Glass of our house-selected Côtes du Rhône', price:12, category:'drinks', image_url:'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&q=80', tags:'vegan,gluten-free', is_available:1, is_featured:0, sort_order:2 },
   { id:20, name:'Menu Dégustation', description:'7-course chef tasting menu, wine pairing optional', price:95, category:'specials', image_url:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80', tags:'chefs-pick', is_available:1, is_featured:1, sort_order:1 },
 ]
- 
+
 async function getAllMenuItems(): Promise<Record<string, MenuItem[]>> {
   try {
     const db = getDB()
@@ -47,13 +45,11 @@ async function getAllMenuItems(): Promise<Record<string, MenuItem[]>> {
       ) as [MenuItem[], unknown]
       if (rows.length) result[cat] = rows
     }
-    // If DB returned something, use it
     if (Object.keys(result).length > 0) return result
   } catch {
     // DB not connected — fall through to mock data
   }
- 
-  // Always return mock data as fallback so the page is never blank
+
   const mock: Record<string, MenuItem[]> = {}
   for (const cat of CATEGORIES) {
     const catItems = MOCK_ITEMS.filter(i => i.category === cat)
@@ -61,25 +57,22 @@ async function getAllMenuItems(): Promise<Record<string, MenuItem[]>> {
   }
   return mock
 }
- 
+
+export const metadata = {
+  title: 'Menu',
+  description: 'Explore our French-inspired menu featuring local Québec ingredients — starters, mains, burgers, desserts and more.',
+}
+
 export default async function MenuPage() {
   const menuByCategory = await getAllMenuItems()
   const availableCats  = Object.keys(menuByCategory)
- 
+
   return (
     <>
       <TopBar />
       <CategoryNav categories={availableCats} labels={CAT_LABELS} />
- 
-      <main style={{ paddingTop: '200px', minHeight: '80vh' }}>
-        {Object.entries(menuByCategory).map(([cat, items]) => (
-          <MenuSection key={cat} cat={cat} label={CAT_LABELS[cat] ?? cat.toUpperCase()} items={items} />
-        ))}
-      </main>
- 
+      <MenuClient menuByCategory={menuByCategory} />
       <Footer />
-      <ToastContainer />
     </>
   )
 }
- 
