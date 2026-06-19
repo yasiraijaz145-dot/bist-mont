@@ -170,9 +170,9 @@ export default function CheckoutPage() {
   return (
     <>
       <TopBar />
-      <main style={{ paddingTop: '110px', background: '#fff' }}>
+      <main style={{ paddingTop: '160px', background: '#fff' }}>
 
-        <section style={{ borderBottom: '1px solid #e8e0d5', padding: '72px 0 60px', position: 'relative', overflow: 'hidden' }}>
+        <section style={{ borderBottom: '1px solid #e8e0d5', padding: '40px 0 60px', position: 'relative', overflow: 'hidden' }}>
           <div style={{
             position: 'absolute', right: '-20px', top: '-30px',
             fontFamily: "'Playfair Display', serif",

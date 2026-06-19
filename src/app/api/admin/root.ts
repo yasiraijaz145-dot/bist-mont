@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getDB } from '@/lib/db'
+import { getAdminSession } from '@/lib/auth'
+
+function isAuthorized() {
+  return getAdminSession() !== null
+}
 
 type StatsRow = {
   total: number
@@ -17,20 +22,14 @@ type SubmissionRow = {
   created_at: string
 }
 
-// NOTE: still placeholder auth (you can improve later)
-function isAuthorized(_req: NextRequest) {
-  return true
-}
-
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
-    if (!isAuthorized(req)) {
+    if (!isAuthorized()) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     const db = getDB()
 
-    // safer: ignore error if column exists
     try {
       await db.execute(`
         ALTER TABLE contact_submissions
@@ -46,11 +45,7 @@ export async function GET(req: NextRequest) {
       FROM contact_submissions
     `)) as any
 
-    const stats: StatsRow = statResult?.[0] ?? {
-      total: 0,
-      unread: 0,
-      today: 0,
-    }
+    const stats: StatsRow = statResult?.[0] ?? { total: 0, unread: 0, today: 0 }
 
     const [rowsResult] = (await db.execute(`
       SELECT id, name, email, phone, message, is_read, created_at
@@ -61,21 +56,15 @@ export async function GET(req: NextRequest) {
 
     const submissions: SubmissionRow[] = rowsResult ?? []
 
-    return NextResponse.json({
-      stats,
-      submissions,
-    })
+    return NextResponse.json({ stats, submissions })
   } catch (e: any) {
-    return NextResponse.json(
-      { error: e?.message ?? 'Server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: e?.message ?? 'Server error' }, { status: 500 })
   }
 }
 
 export async function PATCH(req: NextRequest) {
   try {
-    if (!isAuthorized(req)) {
+    if (!isAuthorized()) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
@@ -87,47 +76,31 @@ export async function PATCH(req: NextRequest) {
     } else {
       const id = Number(body.id)
       const isRead = body.is_read ? 1 : 0
-
-      if (!id) {
-        return NextResponse.json({ error: 'Invalid ID' }, { status: 400 })
-      }
-
-      await db.execute(
-        'UPDATE contact_submissions SET is_read = ? WHERE id = ?',
-        [isRead, id]
-      )
+      if (!id) return NextResponse.json({ error: 'Invalid ID' }, { status: 400 })
+      await db.execute('UPDATE contact_submissions SET is_read = ? WHERE id = ?', [isRead, id])
     }
 
     return NextResponse.json({ ok: true })
   } catch (e: any) {
-    return NextResponse.json(
-      { error: e?.message ?? 'Server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: e?.message ?? 'Server error' }, { status: 500 })
   }
 }
 
 export async function DELETE(req: NextRequest) {
   try {
-    if (!isAuthorized(req)) {
+    if (!isAuthorized()) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     const body = await req.json()
     const id = Number(body.id)
-
-    if (!id) {
-      return NextResponse.json({ error: 'Invalid ID' }, { status: 400 })
-    }
+    if (!id) return NextResponse.json({ error: 'Invalid ID' }, { status: 400 })
 
     const db = getDB()
     await db.execute('DELETE FROM contact_submissions WHERE id = ?', [id])
 
     return NextResponse.json({ ok: true })
   } catch (e: any) {
-    return NextResponse.json(
-      { error: e?.message ?? 'Server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: e?.message ?? 'Server error' }, { status: 500 })
   }
 }
