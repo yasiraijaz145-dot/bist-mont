@@ -10,8 +10,12 @@ export default function CartPanel() {
       <div className={`cart-overlay${isOpen ? ' open' : ''}`} onClick={closeCart} />
       <aside className={`cart-panel${isOpen ? ' open' : ''}`}>
         <div className="cart-panel-header">
-          <h3>🛒 Your Order</h3>
-          <button className="cart-close" onClick={closeCart}>✕</button>
+          <h3>Your Order</h3>
+          <button className="cart-close" onClick={closeCart} aria-label="Close cart">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+          </button>
         </div>
         <div className="cart-panel-body">
           {cart.length === 0 ? (
@@ -41,9 +45,9 @@ export default function CartPanel() {
                 </div>
                 <div className="cart-item-controls">
                   <div className="qty-row">
-                    <button className="qty-btn" onClick={() => changeQty(idx, -1)}>−</button>
+                    <button className="qty-btn" onClick={() => changeQty(idx, -1)} aria-label="Decrease quantity">−</button>
                     <span className="qty-val">{item.qty}</span>
-                    <button className="qty-btn" onClick={() => changeQty(idx, 1)}>+</button>
+                    <button className="qty-btn" onClick={() => changeQty(idx, 1)} aria-label="Increase quantity">+</button>
                   </div>
                   <button className="remove-btn" onClick={() => removeItem(idx)}>Remove</button>
                 </div>
