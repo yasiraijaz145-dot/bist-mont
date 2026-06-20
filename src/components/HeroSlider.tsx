@@ -1,5 +1,6 @@
 'use client'
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import Link from 'next/link'
 
 type Slide = {
   bg: string
@@ -17,18 +18,14 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
   const total = slides.length
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-  const goTo = useCallback((n: number) => {
-    setCurrent(((n % total) + total) % total)
-  }, [total])
+  const goTo = (n: number) => setCurrent(((n % total) + total) % total)
 
   useEffect(() => {
     if (paused) {
       if (intervalRef.current) clearInterval(intervalRef.current)
       return
     }
-    intervalRef.current = setInterval(() => {
-      setCurrent(c => ((c + 1) % total))
-    }, 4000)
+    intervalRef.current = setInterval(() => setCurrent(c => (c + 1) % total), 4000)
     return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
   }, [paused, total])
 
@@ -44,12 +41,7 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
         style={{ transform: `translateX(-${current * (100 / total)}%)` }}
       >
         {slides.map((slide, i) => (
-          <div
-            key={i}
-            className="hero-slide"
-            onClick={() => window.location.href = slide.link}
-            aria-label={`${slide.item} — ${slide.sub}`}
-          >
+          <div key={i} className="hero-slide">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={slide.img} alt={slide.item} />
             <div
@@ -57,16 +49,16 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
               style={{ background: `linear-gradient(to right, ${slide.bg}ee 35%, ${slide.bg}88 60%, transparent 85%)` }}
             >
               <div className="slide-tag">{slide.tag}</div>
-              <h2>{slide.title.split('\n').map((line, j) => (
-                <span key={j}>{line}<br /></span>
-              ))}</h2>
+              <h2>
+                {slide.title.split('\n').map((line, j) => (
+                  <span key={j}>{line}<br /></span>
+                ))}
+              </h2>
               <p className="slide-sub">{slide.sub}</p>
 
-              {/* CTA buttons on slide */}
               <div style={{ display: 'flex', gap: '12px', marginTop: '24px', flexWrap: 'wrap' }}>
-                <a
+                <Link
                   href="/reservations"
-                  onClick={e => e.stopPropagation()}
                   style={{
                     display: 'inline-block',
                     background: '#fff',
@@ -81,10 +73,9 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
                   }}
                 >
                   Reserve a Table
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/menu"
-                  onClick={e => e.stopPropagation()}
                   style={{
                     display: 'inline-block',
                     background: 'transparent',
@@ -100,7 +91,7 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
                   }}
                 >
                   View Menu
-                </a>
+                </Link>
               </div>
 
               <div className="slide-name">{slide.item}</div>
@@ -109,27 +100,17 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
         ))}
       </div>
 
-      {/* Prev / Next */}
-      <button
-        className="slider-arrow prev"
-        onClick={() => goTo(current - 1)}
-        aria-label="Previous slide"
-      >
+      <button className="slider-arrow prev" onClick={() => goTo(current - 1)} aria-label="Previous slide">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
           <path d="M15 18l-6-6 6-6"/>
         </svg>
       </button>
-      <button
-        className="slider-arrow next"
-        onClick={() => goTo(current + 1)}
-        aria-label="Next slide"
-      >
+      <button className="slider-arrow next" onClick={() => goTo(current + 1)} aria-label="Next slide">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
           <path d="M9 18l6-6-6-6"/>
         </svg>
       </button>
 
-      {/* Dots + pause */}
       <div className="slider-dots">
         {slides.map((_, i) => (
           <button
@@ -137,36 +118,23 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
             className={`slider-dot${i === current ? ' active' : ''}`}
             onClick={() => goTo(i)}
             aria-label={`Go to slide ${i + 1}`}
-            aria-current={i === current}
           />
         ))}
-
-        {/* Pause / Play button — WCAG 2.2 requirement for auto-playing content */}
         <button
           onClick={() => setPaused(p => !p)}
           aria-label={paused ? 'Play slideshow' : 'Pause slideshow'}
           style={{
-            width: '28px',
-            height: '8px',
-            borderRadius: '4px',
-            background: 'rgba(255,255,255,0.4)',
-            border: 'none',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '0',
-            marginLeft: '4px',
-            flexShrink: 0,
+            width: '28px', height: '28px', borderRadius: '50%',
+            background: 'rgba(255,255,255,0.25)', border: 'none',
+            cursor: 'pointer', display: 'flex', alignItems: 'center',
+            justifyContent: 'center', marginLeft: '4px', flexShrink: 0,
           }}
         >
           {paused ? (
-            /* Play icon */
             <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff">
               <polygon points="5,3 19,12 5,21"/>
             </svg>
           ) : (
-            /* Pause icon */
             <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff">
               <rect x="6" y="4" width="4" height="16"/>
               <rect x="14" y="4" width="4" height="16"/>
