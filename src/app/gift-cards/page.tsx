@@ -116,10 +116,14 @@ export default function GiftCardsPage() {
             <textarea rows={3} style={{ width: '100%', padding: '0 0 12px', border: 'none', borderBottom: '1.5px solid #e8e0d5', fontSize: '15px', color: '#1a1a1a', background: 'transparent', outline: 'none', resize: 'none', fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6 }} placeholder="Write a personal note to include with the gift card…" />
           </div>
 
+          {/* Plain CSS hover instead of onMouseEnter/onMouseLeave — keeps this a Server Component */}
+          <style>{`
+            .gc-purchase-btn { background: #1a1a1a; transition: background 0.15s; }
+            .gc-purchase-btn:hover { background: #e85d04; }
+          `}</style>
           <button
-            style={{ width: '100%', background: '#1a1a1a', color: '#fff', border: 'none', padding: '18px', fontSize: '13px', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', cursor: 'pointer', fontFamily: "'DM Sans', sans-serif", display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}
-            onMouseEnter={e => (e.currentTarget.style.background = '#e85d04')}
-            onMouseLeave={e => (e.currentTarget.style.background = '#1a1a1a')}
+            className="gc-purchase-btn"
+            style={{ width: '100%', color: '#fff', border: 'none', padding: '18px', fontSize: '13px', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', cursor: 'pointer', fontFamily: "'DM Sans', sans-serif", display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}
           >
             Purchase Gift Card <span style={{ fontSize: '18px' }}>→</span>
           </button>
