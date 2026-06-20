@@ -48,6 +48,7 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
               className="hero-slide-content"
               style={{ background: `linear-gradient(to right, ${slide.bg}ee 35%, ${slide.bg}88 60%, transparent 85%)` }}
             >
+              <div className="slide-name">{slide.item}</div>
               <div className="slide-tag">{slide.tag}</div>
               <h2>
                 {slide.title.split('\n').map((line, j) => (
@@ -56,7 +57,7 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
               </h2>
               <p className="slide-sub">{slide.sub}</p>
 
-              <div style={{ display: 'flex', gap: '12px', marginTop: '24px', flexWrap: 'wrap' }}>
+              <div className="slide-cta-row" style={{ display: 'flex', gap: '12px', marginTop: '24px', flexWrap: 'wrap' }}>
                 <Link
                   href="/reservations"
                   style={{
@@ -93,8 +94,6 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
                   View Menu
                 </Link>
               </div>
-
-              <div className="slide-name">{slide.item}</div>
             </div>
           </div>
         ))}

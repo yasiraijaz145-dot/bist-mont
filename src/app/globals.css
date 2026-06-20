@@ -377,3 +377,29 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
     .about-gallery-img { height: 200px; }
     .about-team-grid { grid-template-columns: 1fr; }
 }
+/* Stats & testimonials grids — responsive to prevent horizontal overflow on mobile */
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+
+@media (max-width: 900px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stats-grid > div { border-right: none !important; border-bottom: 1px solid #e8e0d5; }
+}
+
+/* Contact page decorative "07" — clamp tighter on mobile so it can't push past viewport */
+.contact-deco-number { font-size: clamp(90px, 22vw, 300px); }
+@media (max-width: 480px) {
+    .contact-deco-number { font-size: 22vw; right: 4px !important; }
+}
+
+/* Menu page sticky filter bar + category nav — stack correctly below the fixed TopBar */
+.menu-filter-bar { top: 126px; }
+.menu-cat-nav { top: 176px; }
+@media (max-width: 768px) {
+    .menu-filter-bar { top: 90px; }
+    .menu-cat-nav { top: 140px; }
+}

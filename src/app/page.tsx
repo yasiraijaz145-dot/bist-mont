@@ -56,53 +56,7 @@ export default async function HomePage() {
     <>
       <TopBar />
 
-      <HeroSlider slides={SLIDES} />
 
-      {/* Hero CTA band — sits right below the slider */}
-      <div style={{
-        background: '#1a1a1a',
-        padding: '28px 24px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '20px',
-        flexWrap: 'wrap',
-      }}>
-        <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 400, margin: 0 }}>
-          Fine French-inspired dining in the heart of Montréal since 2009
-        </p>
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <Link href="/reservations" style={{
-            background: '#e85d04',
-            color: '#fff',
-            padding: '12px 28px',
-            fontSize: '13px',
-            fontWeight: 700,
-            letterSpacing: '0.5px',
-            textDecoration: 'none',
-            borderRadius: '6px',
-            whiteSpace: 'nowrap',
-          }}>
-            Reserve a Table
-          </Link>
-          <Link href="/menu" style={{
-            background: 'transparent',
-            color: '#fff',
-            padding: '12px 28px',
-            fontSize: '13px',
-            fontWeight: 700,
-            letterSpacing: '0.5px',
-            textDecoration: 'none',
-            borderRadius: '6px',
-            border: '1.5px solid rgba(255,255,255,0.3)',
-            whiteSpace: 'nowrap',
-          }}>
-            View Full Menu
-          </Link>
-        </div>
-      </div>
-
-      {/* Press strip */}
       <div style={{ background: '#f9f5f0', borderTop: '1px solid #e8e0d5', borderBottom: '1px solid #e8e0d5', padding: '20px 24px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '40px', flexWrap: 'wrap', justifyContent: 'center' }}>
           <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#bbb', whiteSpace: 'nowrap' }}>As seen in</span>
@@ -177,7 +131,7 @@ export default async function HomePage() {
 
       {/* Stats band */}
       <section style={{ background: '#f9f5f0', borderTop: '4px solid #e85d04' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
+        <div className="stats-grid" style={{ maxWidth: '1280px', margin: '0 auto' }}>
           {[
             { stat: '2009', label: 'Founded' },
             { stat: '4.8★', label: 'Guest Rating' },
@@ -199,7 +153,7 @@ export default async function HomePage() {
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#1a1a1a', textAlign: 'center', marginBottom: '60px' }}>
             What our guests say
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+          <div className="testimonials-grid" style={{ gap: '32px' }}>
             {TESTIMONIALS.map(({ quote, author, source }) => (
               <div key={author} style={{ padding: '40px 32px', background: '#f9f5f0', position: 'relative' }}>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '5rem', color: '#e85d04', lineHeight: 0.6, marginBottom: '24px', opacity: 0.4 }}>&ldquo;</div>

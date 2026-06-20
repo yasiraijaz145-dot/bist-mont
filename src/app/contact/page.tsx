@@ -28,7 +28,7 @@ export default function ContactPage() {
       <main style={{ paddingTop: '110px', background: '#fff' }}>
 
         <section style={{ borderBottom: '1px solid #e8e0d5', padding: '72px 0 60px', position: 'relative', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', right: '-20px', top: '-30px', fontFamily: "'Playfair Display', serif", fontSize: 'clamp(160px, 22vw, 300px)', fontWeight: 900, color: 'transparent', WebkitTextStroke: '1px #e8e0d5', lineHeight: 1, userSelect: 'none', pointerEvents: 'none' }}>07</div>
+          <div className="contact-deco-number" style={{ position: 'absolute', right: '0', top: '-30px', fontFamily: "'Playfair Display', serif", fontWeight: 900, color: 'transparent', WebkitTextStroke: '1px #e8e0d5', lineHeight: 1, userSelect: 'none', pointerEvents: 'none' }}>07</div>
           <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 40px' }}>
             <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '20px' }}>Get in touch</p>
             <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, color: '#1a1a1a', lineHeight: 1.05, letterSpacing: '-0.02em', maxWidth: '700px' }}>

@@ -1,7 +1,6 @@
 import { getDB, MenuItem } from '@/lib/db'
 import TopBar from '@/components/TopBar'
 import Footer from '@/components/Footer'
-import CategoryNav from '@/components/CategoryNav'
 import MenuClient from './MenuClient'
 
 const CATEGORIES = ['starters','mains','burgers','pizza','pasta','salads','desserts','drinks','specials']
@@ -65,12 +64,10 @@ export const metadata = {
 
 export default async function MenuPage() {
   const menuByCategory = await getAllMenuItems()
-  const availableCats  = Object.keys(menuByCategory)
 
   return (
     <>
       <TopBar />
-      <CategoryNav categories={availableCats} labels={CAT_LABELS} />
       <MenuClient menuByCategory={menuByCategory} />
       <Footer />
     </>

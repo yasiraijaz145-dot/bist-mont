@@ -70,9 +70,8 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
   return (
     <>
       {/* Filter bar + legend toggle */}
-      <div style={{
+      <div className="menu-filter-bar" style={{
         position: 'sticky',
-        top: '110px',
         zIndex: 800,
         background: '#fff',
         borderBottom: '1px solid #f0e8df',
@@ -168,9 +167,8 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
 
       {/* Category scroll-spy nav — synced with IntersectionObserver */}
       {!activeFilter && (
-        <div style={{
+        <div className="menu-cat-nav" style={{
           position: 'sticky',
-          top: '160px',
           zIndex: 799,
           background: '#f9f5f0',
           borderBottom: '1px solid #e8e0d5',
