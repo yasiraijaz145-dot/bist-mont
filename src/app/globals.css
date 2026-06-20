@@ -201,7 +201,7 @@ ul { list-style: none; }
 
 /* SECTION HEADER */
 .section-header-giant { text-align: center; padding: 60px 0 20px; position: relative; }
-.section-header-giant h2 { font-family: 'Playfair Display', serif; font-size: clamp(5rem, 15vw, 14rem); font-weight: 900; color: var(--orange); letter-spacing: -3px; line-height: 1; text-transform: uppercase; -webkit-text-stroke: 2px var(--orange); opacity: 0.85; }
+.section-header-giant h2 { font-family: 'Playfair Display', serif; font-size: clamp(5rem, 15vw, 14rem); font-weight: 900; color: transparent; letter-spacing: -3px; line-height: 1; text-transform: uppercase; -webkit-text-stroke: 1.5px rgba(232,93,4,0.35); }
 .section-watermark { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; overflow: hidden; z-index: -1; }
 .section-watermark svg { opacity: 0.05; width: 100%; height: 100%; }
 
@@ -417,7 +417,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 .site-logo-center { top: 50%; transform: translate(-50%, -50%) !important; }
 
 /* Slide heading accent — last line styled bold italic orange, echoing the contact-page heading treatment */
-.slide-title-accent { font-style: italic; color: #e85d04; }
+.slide-title-accent { font-style: italic; color: #fff; text-shadow: 0 2px 14px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.8); }
 
 /* Cart & Checkout — stack to single column on mobile instead of forcing a squeezed
    side-by-side layout (was causing a "landscape" feel with cramped form fields). */
@@ -428,4 +428,11 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
     .checkout-fields-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
     .checkout-options-grid { grid-template-columns: 1fr !important; }
     .checkout-triple-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+}
+
+/* Menu category sections — reserve scroll room for the sticky filter bar + cat nav
+   stack so jumping to a category doesn't slam its giant header against (or under) them. */
+[id^="cat-"] { scroll-margin-top: 222px; }
+@media (max-width: 768px) {
+    [id^="cat-"] { scroll-margin-top: 180px; }
 }

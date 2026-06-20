@@ -12,9 +12,9 @@ const CAT_LABELS: Record<string,string> = {
 
 const FILTERS = [
   { key: '', label: 'All' },
-  { key: 'vegan', label: 'V · Vegan' },
-  { key: 'gluten-free', label: 'GF · Gluten-Free' },
-  { key: 'spicy', label: 'S · Spicy' },
+  { key: 'vegan', label: 'Vegan' },
+  { key: 'gluten-free', label: 'Gluten-Free' },
+  { key: 'spicy', label: 'Spicy' },
   { key: 'chefs-pick', label: "Chef's Pick" },
 ]
 
