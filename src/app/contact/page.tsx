@@ -42,7 +42,7 @@ export default function ContactPage() {
         </section>
 
         <section style={{ maxWidth: '1120px', margin: '0 auto', padding: '80px 40px 0' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: '100px', alignItems: 'start', paddingBottom: '60px' }}>
+          <div className="contact-main-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: '100px', alignItems: 'start', paddingBottom: '60px' }}>
 
             <div>
               <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#bbb', marginBottom: '40px' }}>Send a message</p>
@@ -60,7 +60,7 @@ export default function ContactPage() {
               )}
 
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', marginBottom: '40px' }}>
+                <div className="contact-fields-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', marginBottom: '40px' }}>
                   {(['name', 'email'] as const).map((field) => (
                     <div key={field}>
                       <label style={{ display: 'block', fontSize: '10px', fontWeight: 700, letterSpacing: '2.5px', textTransform: 'uppercase', color: focused === field ? '#1a1a1a' : '#bbb', marginBottom: '10px', transition: 'color 0.2s' }}>

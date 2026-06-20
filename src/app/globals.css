@@ -403,3 +403,17 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
     .menu-filter-bar { top: 90px; }
     .menu-cat-nav { top: 140px; }
 }
+
+/* Contact page — stack form/map and name/email fields vertically on mobile (was forcing landscape squeeze) */
+@media (max-width: 768px) {
+    .contact-main-grid { grid-template-columns: 1fr !important; gap: 56px !important; }
+    .contact-fields-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+}
+
+/* TopBar — ensure the bar's painted background fully contains the round logo badge.
+   Without this, the logo overflows past the bar's edge and reveals page content
+   scrolling underneath through the gap (visible as a stray line/seam). */
+.top-bar-inner { position: relative; min-height: 90px; }
+@media (max-width: 768px) {
+    .top-bar-inner { min-height: 64px; }
+}
