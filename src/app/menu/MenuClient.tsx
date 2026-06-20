@@ -12,17 +12,17 @@ const CAT_LABELS: Record<string,string> = {
 
 const FILTERS = [
   { key: '', label: 'All' },
-  { key: 'vegan', label: '🌱 Vegan' },
-  { key: 'gluten-free', label: 'GF Gluten-Free' },
-  { key: 'spicy', label: '🌶️ Spicy' },
-  { key: 'chefs-pick', label: '⭐ Chef\'s Pick' },
+  { key: 'vegan', label: 'V · Vegan' },
+  { key: 'gluten-free', label: 'GF · Gluten-Free' },
+  { key: 'spicy', label: 'S · Spicy' },
+  { key: 'chefs-pick', label: "Chef's Pick" },
 ]
 
 const LEGEND = [
-  { badge: '🌱', label: 'Vegan', desc: 'No animal products' },
+  { badge: 'V', label: 'Vegan', desc: 'No animal products' },
   { badge: 'GF', label: 'Gluten-Free', desc: 'No gluten-containing ingredients' },
-  { badge: '🌶️', label: 'Spicy', desc: 'Contains chili heat' },
-  { badge: '⭐', label: "Chef's Pick", desc: "Antoine's personal recommendation" },
+  { badge: 'S', label: 'Spicy', desc: 'Contains chili heat' },
+  { badge: 'CP', label: "Chef's Pick", desc: "Antoine's personal recommendation" },
 ]
 
 export default function MenuClient({ menuByCategory }: { menuByCategory: Record<string, MenuItem[]> }) {
@@ -75,7 +75,7 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
         zIndex: 800,
         background: '#fff',
         borderBottom: '1px solid #f0e8df',
-        padding: '12px 0',
+        padding: '18px 0',
       }}>
         <div className="container" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
           {FILTERS.map(({ key, label }) => (

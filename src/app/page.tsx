@@ -56,6 +56,7 @@ export default async function HomePage() {
     <>
       <TopBar />
 
+      <HeroSlider slides={SLIDES} />
 
       <div style={{ background: '#f9f5f0', borderTop: '1px solid #e8e0d5', borderBottom: '1px solid #e8e0d5', padding: '20px 24px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '40px', flexWrap: 'wrap', justifyContent: 'center' }}>
