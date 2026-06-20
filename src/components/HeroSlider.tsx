@@ -41,7 +41,7 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
         style={{ transform: `translateX(-${current * (100 / total)}%)` }}
       >
         {slides.map((slide, i) => (
-          <div key={i} className="hero-slide">
+          <div key={i} className={`hero-slide slide-${i + 1}`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={slide.img} alt={slide.item} />
             <div
@@ -51,8 +51,8 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
               <div className="slide-name">{slide.item}</div>
               <div className="slide-tag">{slide.tag}</div>
               <h2>
-                {slide.title.split('\n').map((line, j) => (
-                  <span key={j}>{line}<br /></span>
+                {slide.title.split('\n').map((line, j, arr) => (
+                  <span key={j} className={j === arr.length - 1 ? 'slide-title-accent' : undefined}>{line}<br /></span>
                 ))}
               </h2>
               <p className="slide-sub">{slide.sub}</p>

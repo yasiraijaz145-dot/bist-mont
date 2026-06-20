@@ -397,10 +397,10 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 }
 
 /* Menu page sticky filter bar + category nav — stack correctly below the fixed TopBar */
-.menu-filter-bar { top: 126px; }
+.menu-filter-bar { top: 126px; margin-top: 126px; }
 .menu-cat-nav { top: 176px; }
 @media (max-width: 768px) {
-    .menu-filter-bar { top: 90px; }
+    .menu-filter-bar { top: 90px; margin-top: 90px; }
     .menu-cat-nav { top: 140px; }
 }
 
@@ -413,7 +413,11 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 /* TopBar — ensure the bar's painted background fully contains the round logo badge.
    Without this, the logo overflows past the bar's edge and reveals page content
    scrolling underneath through the gap (visible as a stray line/seam). */
-.top-bar-inner { position: relative; min-height: 90px; }
+.top-bar-inner { position: relative; }
+.top-bar { padding-bottom: 30px; }
 @media (max-width: 768px) {
-    .top-bar-inner { min-height: 64px; }
+    .top-bar { padding-bottom: 22px; }
 }
+
+/* Slide heading accent — last line styled bold italic orange, echoing the contact-page heading treatment */
+.slide-title-accent { font-style: italic; color: #e85d04; }
