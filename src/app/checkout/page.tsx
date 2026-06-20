@@ -195,7 +195,7 @@ export default function CheckoutPage() {
 
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '80px 40px 100px' }}>
           <form onSubmit={handleSubmit}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: '80px', alignItems: 'start' }}>
+            <div className="checkout-main-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: '80px', alignItems: 'start' }}>
 
               <div>
                 {error && (
@@ -205,7 +205,7 @@ export default function CheckoutPage() {
                 )}
 
                 {sectionLabel('Your details')}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginBottom: '40px' }}>
+                <div className="checkout-fields-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginBottom: '40px' }}>
                   <div>
                     <label style={labelStyle('customer_name')}>Full name</label>
                     <input name="customer_name" placeholder="Marie Tremblay"
@@ -230,7 +230,7 @@ export default function CheckoutPage() {
                 </div>
 
                 {sectionLabel('Order type')}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '40px' }}>
+                <div className="checkout-options-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '40px' }}>
                   {(['delivery', 'pickup'] as const).map(t => (
                     <div key={t} onClick={() => setOrderType(t)}
                       style={{
@@ -258,7 +258,7 @@ export default function CheckoutPage() {
                         style={fieldStyle('address_street', !!fieldErrors.address_street)} />
                       {errorText('address_street')}
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '40px' }}>
+                    <div className="checkout-triple-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '40px' }}>
                       <div>
                         <label style={labelStyle('address_apt')}>Apt / Suite</label>
                         <input name="address_apt" placeholder="4B"

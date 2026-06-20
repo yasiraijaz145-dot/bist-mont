@@ -51,11 +51,11 @@ export default function CartPage() {
               <Link href="/menu" style={{ background: '#e85d04', color: '#fff', padding: '14px 32px', borderRadius: '8px', fontWeight: 700, display: 'inline-block' }}>Browse Menu</Link>
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '40px', alignItems: 'start' }}>
+            <div className="cart-main-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '40px', alignItems: 'start' }}>
               {/* Items */}
               <div>
                 {cart.map((item, idx) => (
-                  <div key={idx} style={{ display: 'grid', gridTemplateColumns: '80px 1fr auto', gap: '16px', alignItems: 'center', padding: '20px', background: '#fff', border: '1px solid #e8e0d5', borderRadius: '12px', marginBottom: '12px' }}>
+                  <div key={idx} className="cart-item-row" style={{ display: 'grid', gridTemplateColumns: '80px 1fr auto', gap: '16px', alignItems: 'center', padding: '20px', background: '#fff', border: '1px solid #e8e0d5', borderRadius: '12px', marginBottom: '12px' }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={item.img} style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '8px' }}
                       onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=160' }}

@@ -331,9 +331,9 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
     .main-nav { display: none; }
     .hero-slider { margin-top: 90px; }
     .category-nav-bar { top: 90px; }
-    .hero-slide img { height: 260px; }
+    .hero-slide img { height: 360px; }
     .hero-slide-content { padding: 20px 24px; }
-    .slide-1 h2, .slide-2 h2, .slide-3 h2 { font-size: 1.8rem; line-height: 1.05; }
+    .slide-1 h2, .slide-2 h2, .slide-3 h2 { font-size: 1.8rem; line-height: 1.15; }
     .slide-1 .slide-sub, .slide-2 .slide-sub, .slide-3 .slide-sub { font-size: 12px; }
     .slide-1 .slide-name, .slide-2 .slide-name, .slide-3 .slide-name { display: none; }
     .category-nav-inner { padding: 0 8px; }
@@ -364,7 +364,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
     .menu-card-img-wrap img { height: 130px; }
     .menu-card-name { font-size: 13px; }
     .menu-card-body { padding: 10px; }
-    .hero-slide img { height: 220px; }
+    .hero-slide img { height: 320px; }
     .footer-grid { grid-template-columns: 1fr; gap: 28px; }
     .newsletter-form { flex-direction: column; }
     .newsletter-form input, .newsletter-form button { width: 100%; }
@@ -410,14 +410,22 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
     .contact-fields-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
 }
 
-/* TopBar — ensure the bar's painted background fully contains the round logo badge.
-   Without this, the logo overflows past the bar's edge and reveals page content
-   scrolling underneath through the gap (visible as a stray line/seam). */
+/* TopBar — center the round logo badge on the bar's row so its overflow above/below
+   is symmetric and doesn't push past the header's painted area (which would otherwise
+   reveal page content through the gap, or push the header taller than its reserved offset). */
 .top-bar-inner { position: relative; }
-.top-bar { padding-bottom: 30px; }
-@media (max-width: 768px) {
-    .top-bar { padding-bottom: 22px; }
-}
+.site-logo-center { top: 50%; transform: translate(-50%, -50%) !important; }
 
 /* Slide heading accent — last line styled bold italic orange, echoing the contact-page heading treatment */
 .slide-title-accent { font-style: italic; color: #e85d04; }
+
+/* Cart & Checkout — stack to single column on mobile instead of forcing a squeezed
+   side-by-side layout (was causing a "landscape" feel with cramped form fields). */
+@media (max-width: 768px) {
+    .cart-main-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .cart-item-row { grid-template-columns: 56px 1fr auto !important; gap: 10px !important; padding: 14px !important; }
+    .checkout-main-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+    .checkout-fields-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+    .checkout-options-grid { grid-template-columns: 1fr !important; }
+    .checkout-triple-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+}
