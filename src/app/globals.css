@@ -179,7 +179,7 @@ ul { list-style: none; }
 .slide-1 .slide-tag, .slide-2 .slide-tag, .slide-3 .slide-tag { font-size: 10.5px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 12px; font-weight: 600; }
 .slide-1 h2, .slide-2 h2, .slide-3 h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5.5vw, 5rem); font-weight: 900; color: #fff; line-height: 0.92; margin-bottom: 20px; letter-spacing: -0.5px; }
 .slide-1 .slide-sub, .slide-2 .slide-sub, .slide-3 .slide-sub { font-size: 13.5px; color: rgba(255,255,255,0.85); max-width: 340px; line-height: 1.7; }
-.slide-1 .slide-name, .slide-2 .slide-name, .slide-3 .slide-name { position: absolute; bottom: 20px; right: 40px; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 600; font-style: italic; color: rgba(255,255,255,0.12); font-family: 'Cormorant Garamond', serif; letter-spacing: -1px; }
+.slide-1 .slide-name, .slide-2 .slide-name, .slide-3 .slide-name { position: absolute; top: 28px; right: 40px; font-size: clamp(1.8rem, 3.5vw, 3.2rem); font-weight: 600; font-style: italic; color: rgba(255,255,255,0.18); font-family: 'Cormorant Garamond', serif; letter-spacing: -1px; pointer-events: none; }
 .slide-2 { background: linear-gradient(135deg, #ff6b35 0%, #e85d04 100%); }
 .slide-3 { background: linear-gradient(135deg, #d62839 0%, #c0392b 100%); }
 
@@ -278,6 +278,21 @@ ul { list-style: none; }
 .footer-legal a { font-size: 11px; color: rgba(255,255,255,0.25); transition: color 0.2s; }
 .footer-legal a:hover { color: rgba(255,255,255,0.5); }
 
+/* ABOUT TEASER (homepage) */
+.about-teaser-grid { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-teaser-img-wrap { position: relative; }
+.about-teaser-img-wrap img { width: 100%; height: 500px; object-fit: cover; display: block; }
+.about-teaser-badge { position: absolute; bottom: -20px; left: -20px; background: var(--orange); padding: 24px 32px; color: #fff; }
+.about-teaser-badge .badge-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; line-height: 1; }
+.about-teaser-badge .badge-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; opacity: 0.9; }
+
+/* ABOUT PAGE — gallery, team, stats */
+.about-gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; gap: 4px; }
+.about-gallery-img { width: 100%; height: 248px; object-fit: cover; display: block; }
+.about-gallery-img-large { height: 500px; grid-column: 1; grid-row: 1 / 3; }
+.about-team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+.about-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.08); }
+
 /* SKELETON */
 .skeleton-wrap { position: fixed; inset: 0; z-index: 9999; background: #fff; overflow: hidden; transition: opacity 0.4s ease; }
 .skeleton-wrap.fade-out { opacity: 0; pointer-events: none; }
@@ -307,7 +322,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 @media (max-width: 768px) {
     .top-bar { padding: 12px 0; }
     .top-bar-inner { padding: 0 16px; }
-    .top-bar-left span { display: none; }
+    .top-bar-left { display: none; }
     .top-bar-phone { display: none; }
     .site-logo-center { width: 64px; height: 64px; }
     .site-logo-center .logo-text { font-size: 10px; }
@@ -331,6 +346,15 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
     .skel-hero { height: 260px; }
     .skel-trust { flex-wrap: wrap; }
     .skel-nav   { display: none; }
+    .about-teaser-grid { grid-template-columns: 1fr; gap: 40px; padding: 0 24px; }
+    .about-teaser-img-wrap img { height: 320px; }
+    .about-teaser-badge { left: 16px; bottom: -16px; padding: 16px 22px; }
+    .about-teaser-badge .badge-num { font-size: 1.8rem; }
+    .about-gallery-grid { grid-template-columns: 1fr 1fr; }
+    .about-gallery-img-large { grid-column: 1 / 3; grid-row: auto; height: 260px; }
+    .about-gallery-img { height: 150px; }
+    .about-team-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .about-stats-grid { grid-template-columns: 1fr; }
 }
 
 /* PHONE */
@@ -348,4 +372,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
     .cart-panel { width: 100%; max-width: 100%; }
     img, video { max-width: 100%; height: auto; }
     button, input, select, textarea { font-size: 16px !important; }
+    .about-gallery-grid { grid-template-columns: 1fr; }
+    .about-gallery-img-large { grid-column: 1; height: 220px; }
+    .about-gallery-img { height: 200px; }
+    .about-team-grid { grid-template-columns: 1fr; }
 }

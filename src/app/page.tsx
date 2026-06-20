@@ -132,7 +132,7 @@ export default async function HomePage() {
 
       {/* About teaser */}
       <section style={{ background: '#1a1a1a', padding: '100px 0' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+        <div className="about-teaser-grid">
           <div>
             <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '20px' }}>Our Story</p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2.2rem, 4vw, 3.5rem)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px' }}>
@@ -161,23 +161,15 @@ export default async function HomePage() {
               Meet the team →
             </Link>
           </div>
-          <div style={{ position: 'relative' }}>
+          <div className="about-teaser-img-wrap">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=85"
               alt="Chef at work"
-              style={{ width: '100%', height: '500px', objectFit: 'cover', display: 'block' }}
             />
-            <div style={{
-              position: 'absolute',
-              bottom: '-20px',
-              left: '-20px',
-              background: '#e85d04',
-              padding: '24px 32px',
-              color: '#fff',
-            }}>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.5rem', fontWeight: 700, lineHeight: 1 }}>15+</div>
-              <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', marginTop: '4px', opacity: 0.9 }}>Local Farm Partners</div>
+            <div className="about-teaser-badge">
+              <div className="badge-num">15+</div>
+              <div className="badge-label">Local Farm Partners</div>
             </div>
           </div>
         </div>

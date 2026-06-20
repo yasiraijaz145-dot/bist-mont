@@ -95,21 +95,14 @@ export default function AboutPage() {
 
         {/* Photo gallery */}
         <section style={{ background: '#f9f5f0', padding: '0' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gridTemplateRows: 'auto auto', gap: '4px' }}>
+          <div className="about-gallery-grid">
             {GALLERY.map((src, i) => (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 key={i}
                 src={src}
                 alt={`Bistro Montréal ${i + 1}`}
-                style={{
-                  width: '100%',
-                  height: i === 0 ? '500px' : '248px',
-                  objectFit: 'cover',
-                  display: 'block',
-                  gridColumn: i === 0 ? '1' : undefined,
-                  gridRow: i === 0 ? '1 / 3' : undefined,
-                }}
+                className={`about-gallery-img${i === 0 ? ' about-gallery-img-large' : ''}`}
               />
             ))}
           </div>
@@ -121,7 +114,7 @@ export default function AboutPage() {
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#1a1a1a', textAlign: 'center', marginBottom: '60px' }}>
             Behind every plate
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px' }}>
+          <div className="about-team-grid">
             {TEAM.map(({ name, title, img, bio }) => (
               <div key={name}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -152,7 +145,7 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'rgba(255,255,255,0.08)' }}>
+            <div className="about-stats-grid">
               {[
                 { stat: '2009', label: 'Founded' },
                 { stat: '15+', label: 'Local farm partners' },
