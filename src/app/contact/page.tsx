@@ -27,17 +27,38 @@ export default function ContactPage() {
       <TopBar />
       <main style={{ paddingTop: '110px', background: '#fff' }}>
 
-        <section style={{ borderBottom: '1px solid #e8e0d5', padding: '72px 0 60px', position: 'relative', overflow: 'hidden' }}>
-          <div className="contact-deco-number" style={{ position: 'absolute', right: '0', top: '-30px', fontFamily: "'Playfair Display', serif", fontWeight: 900, color: 'transparent', WebkitTextStroke: '1px #e8e0d5', lineHeight: 1, userSelect: 'none', pointerEvents: 'none' }}>07</div>
-          <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 40px' }}>
-            <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '20px' }}>Get in touch</p>
-            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, color: '#1a1a1a', lineHeight: 1.05, letterSpacing: '-0.02em', maxWidth: '700px' }}>
-              A table<br />
-              <em style={{ color: '#e85d04', fontStyle: 'italic' }}>awaits you.</em>
-            </h1>
-            <p style={{ marginTop: '28px', fontSize: '16px', color: '#888', maxWidth: '420px', lineHeight: 1.7 }}>
-              Questions, reservations, or a late-night craving — write to us and we&apos;ll respond within the day.
-            </p>
+        <section style={{ borderBottom: '1px solid #e8e0d5', padding: '72px 0 60px', position: 'relative', overflow: 'hidden', background: 'linear-gradient(135deg, #fdf9f6 0%, #fff 60%)' }}>
+          <div style={{ position: 'absolute', top: 0, right: 0, width: '340px', height: '100%', background: 'linear-gradient(135deg, transparent 40%, #fdf4ed 100%)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', top: '32px', right: '48px', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px', pointerEvents: 'none', opacity: 0.6 }}>
+            <div style={{ width: '48px', height: '1.5px', background: '#e85d04' }} />
+            <div style={{ width: '32px', height: '1.5px', background: '#e85d04' }} />
+            <div style={{ width: '20px', height: '1.5px', background: '#e85d04' }} />
+          </div>
+          <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 40px', position: 'relative' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '80px' }} className="contact-hero-grid">
+              <div style={{ flex: 1 }}>
+                <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '20px' }}>Get in touch</p>
+                <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, color: '#1a1a1a', lineHeight: 1.05, letterSpacing: '-0.02em', maxWidth: '700px' }}>
+                  A table<br />
+                  <em style={{ color: '#e85d04', fontStyle: 'italic' }}>awaits you.</em>
+                </h1>
+                <p style={{ marginTop: '28px', fontSize: '16px', color: '#888', maxWidth: '420px', lineHeight: 1.7 }}>
+                  Questions, reservations, or a late-night craving — write to us and we&apos;ll respond within the day.
+                </p>
+              </div>
+              <div className="contact-hero-aside" style={{ display: 'flex', flexDirection: 'column', gap: '0', minWidth: '220px', borderLeft: '1px solid #e8e0d5', paddingLeft: '48px' }}>
+                {([
+                  { label: 'Address', value: '1420 Rue Peel, Montréal' },
+                  { label: 'Hours', value: 'Tue–Sun · 5 – 10:30 PM' },
+                  { label: 'Email', value: 'hello@bistromontreal.com' },
+                ] as { label: string; value: string }[]).map(({ label, value }) => (
+                  <div key={label} style={{ padding: '16px 0', borderBottom: '1px solid #f0ebe3' }}>
+                    <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#bbb', marginBottom: '4px' }}>{label}</div>
+                    <div style={{ fontSize: '14px', color: '#1a1a1a', fontWeight: 500 }}>{value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -178,6 +199,12 @@ export default function ContactPage() {
 
       </main>
       <Footer />
+      <style>{`
+        @media (max-width: 600px) {
+          .contact-hero-grid { flex-direction: column !important; gap: 40px !important; }
+          .contact-hero-aside { border-left: none !important; border-top: 1px solid #e8e0d5 !important; padding-left: 0 !important; padding-top: 32px !important; min-width: unset !important; }
+        }
+      `}</style>
     </>
   )
 }

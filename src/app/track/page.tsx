@@ -40,10 +40,19 @@ export default function TrackPage() {
     <>
       <TopBar />
       <main style={{ paddingTop: '110px', minHeight: '70vh' }}>
-        <div style={{ background: '#f9f5f0', padding: '40px 0' }}>
-          <div className="container">
-            <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: '2.5rem', color: '#1a1a1a' }}>Track Your Order</h1>
-            <p style={{ color: '#888', marginTop: '8px' }}>Enter your order number or email address.</p>
+        <div style={{ background: 'linear-gradient(135deg, #fdf9f6 0%, #fff5ee 100%)', padding: '64px 0 56px', position: 'relative', overflow: 'hidden', borderBottom: '1px solid #e8e0d5' }}>
+          <div style={{ position: 'absolute', top: 0, right: 0, width: '300px', height: '100%', background: 'linear-gradient(135deg, transparent 40%, #fdf0e6 100%)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', top: '28px', right: '48px', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px', pointerEvents: 'none', opacity: 0.6 }}>
+            <div style={{ width: '48px', height: '1.5px', background: '#e85d04' }} />
+            <div style={{ width: '32px', height: '1.5px', background: '#e85d04' }} />
+            <div style={{ width: '20px', height: '1.5px', background: '#e85d04' }} />
+          </div>
+          <div className="container" style={{ position: 'relative' }}>
+            <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '16px' }}>Order status</p>
+            <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', fontWeight: 700, color: '#1a1a1a', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
+              Track Your<br /><em style={{ color: '#e85d04', fontStyle: 'italic' }}>Order.</em>
+            </h1>
+            <p style={{ color: '#888', marginTop: '16px', fontSize: '16px', lineHeight: 1.7, maxWidth: '380px' }}>Enter your order number or email address to see real-time status.</p>
           </div>
         </div>
 
