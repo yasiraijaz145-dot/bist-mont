@@ -83,15 +83,18 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
               key={key}
               onClick={() => setActiveFilter(key)}
               style={{
-                padding: '7px 16px',
-                border: `1.5px solid ${activeFilter === key ? '#e85d04' : '#e8e0d5'}`,
+                padding: '9px 18px',
+                border: `1.5px solid ${activeFilter === key ? '#e85d04' : '#ddd2c4'}`,
                 background: activeFilter === key ? '#e85d04' : 'transparent',
-                color: activeFilter === key ? '#fff' : '#555',
-                borderRadius: '20px',
-                fontSize: '12px',
-                fontWeight: 600,
+                color: activeFilter === key ? '#fff' : '#1a1a1a',
+                borderRadius: '4px',
+                fontSize: '11.5px',
+                fontWeight: 700,
+                letterSpacing: '0.6px',
+                textTransform: 'uppercase',
                 cursor: 'pointer',
                 fontFamily: "'DM Sans', sans-serif",
+                boxShadow: activeFilter === key ? '0 4px 12px rgba(232,93,4,0.3)' : 'none',
                 transition: 'all 0.15s',
               }}
             >
@@ -104,24 +107,27 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
             onClick={() => setShowLegend(v => !v)}
             style={{
               marginLeft: 'auto',
-              padding: '7px 14px',
-              border: '1.5px solid #e8e0d5',
+              padding: '9px 16px',
+              border: '1.5px solid #ddd2c4',
               background: 'transparent',
-              color: '#888',
-              borderRadius: '20px',
-              fontSize: '11px',
-              fontWeight: 600,
+              color: '#1a1a1a',
+              borderRadius: '4px',
+              fontSize: '10.5px',
+              fontWeight: 700,
+              letterSpacing: '0.6px',
+              textTransform: 'uppercase',
               cursor: 'pointer',
               fontFamily: "'DM Sans', sans-serif",
               display: 'flex',
               alignItems: 'center',
-              gap: '6px',
+              gap: '7px',
+              transition: 'all 0.15s',
             }}
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
             </svg>
-            Dietary key
+            Dietary Key
           </button>
         </div>
 
@@ -155,7 +161,7 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
                     {badge}
                   </span>
                   <div>
-                    <div style={{ fontSize: '12px', fontWeight: 700, color: '#1a1a1a' }}>{label}</div>
+                    <div style={{ fontSize: '11.5px', fontWeight: 700, letterSpacing: '0.5px', textTransform: 'uppercase', color: '#1a1a1a' }}>{label}</div>
                     <div style={{ fontSize: '11px', color: '#888' }}>{desc}</div>
                   </div>
                 </div>
