@@ -33,12 +33,12 @@ const SPACES = [
 ]
 
 const OCCASIONS = [
-  { icon: '💼', label: 'Corporate Dinners' },
-  { icon: '💍', label: 'Wedding Receptions' },
-  { icon: '🎂', label: 'Birthday Celebrations' },
-  { icon: '🥂', label: 'Anniversary Dinners' },
-  { icon: '🎓', label: 'Graduation Parties' },
-  { icon: '🍷', label: 'Wine & Tasting Events' },
+  'Corporate Dinners',
+  'Wedding Receptions',
+  'Birthday Celebrations',
+  'Anniversary Dinners',
+  'Graduation Parties',
+  'Wine & Tasting Events',
 ]
 
 export default function PrivateDiningPage() {
@@ -70,10 +70,11 @@ export default function PrivateDiningPage() {
         {/* Occasions */}
         <section style={{ background: '#f9f5f0', padding: '60px 0', borderBottom: '1px solid #e8e0d5' }}>
           <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
-              {OCCASIONS.map(({ icon, label }) => (
-                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 24px', background: '#fff', border: '1px solid #e8e0d5', borderRadius: '100px', fontSize: '14px', fontWeight: 600, color: '#1a1a1a' }}>
-                  <span>{icon}</span>{label}
+            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', textAlign: 'center', marginBottom: '28px' }}>Perfect for</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
+              {OCCASIONS.map((label) => (
+                <div key={label} style={{ padding: '10px 22px', background: 'transparent', border: '1px solid #c8bfb5', fontSize: '13px', fontWeight: 600, letterSpacing: '0.5px', color: '#555', fontFamily: "'DM Sans', sans-serif" }}>
+                  {label}
                 </div>
               ))}
             </div>
@@ -88,18 +89,18 @@ export default function PrivateDiningPage() {
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
             {SPACES.map(({ name, capacity, img, desc, features }, i) => (
-              <div key={name} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center', direction: i % 2 === 1 ? 'rtl' : 'ltr' }}>
-                <div style={{ direction: 'ltr' }}>
+              <div key={name} className={i % 2 === 1 ? 'space-row space-row-reverse' : 'space-row'}>
+                <div className="space-img">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={img} alt={name} style={{ width: '100%', height: '380px', objectFit: 'cover', display: 'block' }} />
                 </div>
-                <div style={{ direction: 'ltr' }}>
+                <div className="space-text">
                   <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '12px' }}>{capacity}</p>
-                  <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '16px' }}>{name}</h3>
+                  <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.6rem, 4vw, 2rem)', fontWeight: 700, color: '#1a1a1a', marginBottom: '16px' }}>{name}</h3>
                   <p style={{ fontSize: '16px', color: '#666', lineHeight: 1.7, marginBottom: '24px' }}>{desc}</p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                     {features.map(f => (
-                      <span key={f} style={{ padding: '6px 14px', background: '#f9f5f0', border: '1px solid #e8e0d5', borderRadius: '100px', fontSize: '12px', fontWeight: 600, color: '#555' }}>{f}</span>
+                      <span key={f} style={{ padding: '6px 14px', background: '#f9f5f0', border: '1px solid #e8e0d5', fontSize: '12px', fontWeight: 600, color: '#555' }}>{f}</span>
                     ))}
                   </div>
                 </div>
@@ -129,6 +130,31 @@ export default function PrivateDiningPage() {
 
       </main>
       <Footer />
+      <style>{`
+        .space-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 60px;
+          align-items: center;
+        }
+        .space-row-reverse {
+          direction: rtl;
+        }
+        .space-row-reverse .space-img,
+        .space-row-reverse .space-text {
+          direction: ltr;
+        }
+        @media (max-width: 768px) {
+          .space-row, .space-row-reverse {
+            grid-template-columns: 1fr !important;
+            direction: ltr !important;
+            gap: 28px !important;
+          }
+          .space-img img {
+            height: 240px !important;
+          }
+        }
+      `}</style>
     </>
   )
 }
