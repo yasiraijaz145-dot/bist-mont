@@ -400,7 +400,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 .menu-filter-bar { top: 126px; margin-top: 126px; }
 .menu-cat-nav { top: 190px; }
 @media (max-width: 768px) {
-    .menu-filter-bar { top: 90px; margin-top: 90px; }
+    .menu-filter-bar { top: 65px; margin-top: 65px; }
     .menu-cat-nav { top: 154px; }
 }
 
