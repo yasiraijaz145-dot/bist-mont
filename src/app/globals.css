@@ -398,10 +398,10 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 
 /* Menu page sticky filter bar + category nav — stack correctly below the fixed TopBar */
 .menu-filter-bar { top: 126px; margin-top: 126px; }
-.menu-cat-nav { top: 176px; }
+.menu-cat-nav { top: 190px; }
 @media (max-width: 768px) {
     .menu-filter-bar { top: 90px; margin-top: 90px; }
-    .menu-cat-nav { top: 140px; }
+    .menu-cat-nav { top: 154px; }
 }
 
 /* Contact page — stack form/map and name/email fields vertically on mobile (was forcing landscape squeeze) */

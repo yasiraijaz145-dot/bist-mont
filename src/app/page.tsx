@@ -67,16 +67,20 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* Category nav bar */}
-      <nav className="category-nav-bar" id="menu-start">
-        <div className="category-nav-inner">
-          {Object.keys(menuByCategory).map(cat => (
-            <a key={cat} className="cat-nav-btn" href={`#cat-${cat}`}>
-              {CAT_LABELS[cat] ?? cat.toUpperCase()}
-            </a>
-          ))}
-        </div>
-      </nav>
+      {/* Category nav bar — only render when there's actually menu data, otherwise
+          this sticky bar collapses to just its border line and "floats" over content
+          while scrolling. */}
+      {Object.keys(menuByCategory).length > 0 && (
+        <nav className="category-nav-bar" id="menu-start">
+          <div className="category-nav-inner">
+            {Object.keys(menuByCategory).map(cat => (
+              <a key={cat} className="cat-nav-btn" href={`#cat-${cat}`}>
+                {CAT_LABELS[cat] ?? cat.toUpperCase()}
+              </a>
+            ))}
+          </div>
+        </nav>
+      )}
 
       {/* Menu sections */}
       <main className="menu-section">
