@@ -19,9 +19,9 @@ const CAT_LABELS: Record<string,string> = {
 }
 
 const SLIDES = [
-  { bg: '#e85d04', img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1400&q=85', tag: 'NEW ARRIVAL', title: 'Bold.\nRich.\nUnforgettable.', sub: 'A Wagyu experience crafted for those who demand the extraordinary', item: 'TRUFFLE ROYALE', link: '#cat-burgers' },
+  { bg: '#e85d04', img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1400&q=85', tag: 'NEW ARRIVAL', title: 'Bold, Rich\nUnforgettable', sub: 'A Wagyu experience crafted for those who demand the extraordinary', item: 'TRUFFLE ROYALE', link: '#cat-burgers' },
   { bg: '#ff6b35', img: 'https://images.unsplash.com/photo-1604604994333-f1b0e9471186?w=1400&q=85', tag: "CHEF'S SPECIAL", title: 'Big Flavor\nLives Inside', sub: 'French duck breast perfected with cherry gastrique', item: 'MAGRET DE CANARD', link: '#cat-mains' },
-  { bg: '#c0392b', img: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1400&q=85', tag: 'FRESH TODAY', title: 'WHERE FRESH\nLAYERS MEET', sub: 'Pan-roasted Atlantic salmon with beurre blanc', item: 'SAUMON ATLANTIQUE', link: '#cat-mains' },
+  { bg: '#c0392b', img: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1400&q=85', tag: 'FRESH TODAY', title: 'Where Fresh\nLayers Meet', sub: 'Pan-roasted Atlantic salmon with beurre blanc', item: 'SAUMON ATLANTIQUE', link: '#cat-mains' },
 ]
 
 const PRESS = ['Le Devoir', 'Montréal Gazette', 'Food & Wine', 'Condé Nast Traveller', 'CBC Arts']

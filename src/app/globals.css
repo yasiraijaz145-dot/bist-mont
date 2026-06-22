@@ -183,9 +183,9 @@ ul { list-style: none; }
 .hero-slide img { width: 100%; height: 500px; object-fit: cover; display: block; }
 .hero-slide-content { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 40px 60px; }
 .slide-1 { background: #e85d04; }
-.slide-1 .hero-slide-content, .slide-2 .hero-slide-content, .slide-3 .hero-slide-content { justify-content: flex-end; align-items: flex-start; padding-bottom: 50px; }
+.slide-1 .hero-slide-content, .slide-2 .hero-slide-content, .slide-3 .hero-slide-content { justify-content: flex-end; align-items: flex-start; padding-bottom: 50px; padding-top: 70px; }
 .slide-1 .slide-tag, .slide-2 .slide-tag, .slide-3 .slide-tag { font-size: 10.5px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 12px; font-weight: 600; }
-.slide-1 h2, .slide-2 h2, .slide-3 h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5.5vw, 5rem); font-weight: 900; color: #fff; line-height: 0.92; margin-bottom: 20px; letter-spacing: -0.5px; }
+.slide-1 h2, .slide-2 h2, .slide-3 h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5.5vw, 5rem); font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 20px; letter-spacing: -0.5px; }
 .slide-1 .slide-sub, .slide-2 .slide-sub, .slide-3 .slide-sub { font-size: 13.5px; color: rgba(255,255,255,0.85); max-width: 340px; line-height: 1.7; }
 .slide-1 .slide-name, .slide-2 .slide-name, .slide-3 .slide-name { position: absolute; top: 28px; right: 40px; font-size: clamp(1.8rem, 3.5vw, 3.2rem); font-weight: 600; font-style: italic; color: rgba(255,255,255,0.18); font-family: 'Cormorant Garamond', serif; letter-spacing: -1px; pointer-events: none; }
 .slide-2 { background: linear-gradient(135deg, #ff6b35 0%, #e85d04 100%); }
@@ -340,7 +340,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
     .hero-slider { margin-top: var(--header-h-mobile); }
     .category-nav-bar { top: var(--header-h-mobile); }
     .hero-slide img { height: 360px; }
-    .hero-slide-content { padding: 20px 24px; }
+    .hero-slide-content { padding: 20px 24px; padding-top: 50px; }
     .slide-1 h2, .slide-2 h2, .slide-3 h2 { font-size: 1.8rem; line-height: 1.15; }
     .slide-1 .slide-sub, .slide-2 .slide-sub, .slide-3 .slide-sub { font-size: 12px; }
     .slide-1 .slide-name, .slide-2 .slide-name, .slide-3 .slide-name { display: none; }
