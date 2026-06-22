@@ -53,12 +53,12 @@ ul { list-style: none; }
 
 /* TOP BAR */
 .top-bar {
-    background: #fff;
-    border-bottom: 1px solid var(--border);
+    background: var(--orange);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
     padding: 18px 0;
     position: fixed; top: 0; left: 0; right: 0;
     z-index: 999;
-    box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.12);
 }
 .top-bar::before {
     content: '';
@@ -74,19 +74,19 @@ ul { list-style: none; }
 }
 .top-bar-left {
     display: flex; align-items: center; gap: 8px;
-    font-size: 13px; font-weight: 600; color: var(--text-dark);
+    font-size: 13px; font-weight: 600; color: #fff;
     cursor: pointer; padding: 8px 14px;
-    border: 1.5px solid var(--border); border-radius: 100px;
+    border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
-.top-bar-left:hover { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(232,93,4,0.08); }
-.top-bar-left svg { color: var(--orange); }
-.top-bar-left span { color: var(--text-mid); font-weight: 400; }
+.top-bar-left:hover { border-color: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,0.15); }
+.top-bar-left svg { color: #fff; }
+.top-bar-left span { color: rgba(255,255,255,0.85); font-weight: 400; }
 .top-bar-phone {
     display: flex; align-items: center; gap: 8px;
-    font-size: 14px; font-weight: 700; color: var(--text-dark);
+    font-size: 14px; font-weight: 700; color: #fff;
 }
-.top-bar-phone svg { color: var(--orange); }
+.top-bar-phone svg { color: #fff; }
 
 .site-logo-center {
     position: absolute; left: 50%; transform: translateX(-50%);
@@ -103,13 +103,13 @@ ul { list-style: none; }
 
 .top-bar-cart {
     background: none; border: none; cursor: pointer;
-    position: relative; color: var(--text-dark); padding: 8px; transition: color 0.2s;
+    position: relative; color: #fff; padding: 8px; transition: color 0.2s;
 }
-.top-bar-cart:hover { color: var(--orange); }
+.top-bar-cart:hover { color: #1a1a1a; }
 .top-bar-cart svg { width: 24px; height: 24px; }
 .cart-badge {
     position: absolute; top: 0; right: 0;
-    background: var(--orange); color: #fff;
+    background: #1a1a1a; color: #fff;
     font-size: 10px; font-weight: 700; width: 18px; height: 18px;
     border-radius: 50%; display: flex; align-items: center; justify-content: center;
 }
@@ -117,7 +117,7 @@ ul { list-style: none; }
 /* HAMBURGER */
 .hamburger {
     display: none; background: none; border: none;
-    cursor: pointer; padding: 8px; color: var(--text-dark);
+    cursor: pointer; padding: 8px; color: #fff;
     flex-direction: column; gap: 5px; align-items: center; justify-content: center;
 }
 .hamburger span { display: block; width: 22px; height: 2px; background: currentColor; transition: transform 0.3s, opacity 0.3s; }
@@ -328,7 +328,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
     .site-logo-center .logo-text { font-size: 10px; }
     .site-logo-center .logo-sub { font-size: 7px; }
     .hamburger { display: flex; }
-    .main-nav { display: none; }
+    .main-nav { display: none; border-top: none; }
     .hero-slider { margin-top: 90px; }
     .category-nav-bar { top: 90px; }
     .hero-slide img { height: 360px; }
@@ -338,7 +338,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
     .slide-1 .slide-name, .slide-2 .slide-name, .slide-3 .slide-name { display: none; }
     .category-nav-inner { padding: 0 8px; }
     .cat-nav-btn { padding: 12px 14px; font-size: 11px; }
-    .section-header-giant h2 { font-size: clamp(3rem, 18vw, 6rem); letter-spacing: -1px; }
+    .section-header-giant { display: none; }
     .menu-items-row { grid-template-columns: 1fr 1fr; gap: 12px; }
     .menu-card-img-wrap img { height: 160px; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -435,4 +435,14 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 [id^="cat-"] { scroll-margin-top: 222px; }
 @media (max-width: 768px) {
     [id^="cat-"] { scroll-margin-top: 180px; }
+}
+
+/* Skip-to-content link — visually hidden until keyboard-focused */
+.skip-to-content { position: absolute; left: -9999px; top: 8px; background: #e85d04; color: #fff; padding: 10px 16px; z-index: 10000; border-radius: 4px; font-size: 13px; font-weight: 700; text-decoration: none; }
+.skip-to-content:focus { left: 8px; }
+
+/* Belt-and-suspenders: kill the main-nav top border specifically in the
+   768-900px gap (large phones/small tablets) without touching other tablet rules */
+@media (max-width: 900px) {
+    .main-nav { border-top: none; }
 }

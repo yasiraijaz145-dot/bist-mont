@@ -48,7 +48,6 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
               className="hero-slide-content"
               style={{ background: `linear-gradient(to right, ${slide.bg}ee 35%, ${slide.bg}88 60%, transparent 85%)` }}
             >
-              <div className="slide-name">{slide.item}</div>
               <div className="slide-tag">{slide.tag}</div>
               <h2>
                 {slide.title.split('\n').map((line, j, arr) => (
@@ -119,27 +118,6 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}
-        <button
-          onClick={() => setPaused(p => !p)}
-          aria-label={paused ? 'Play slideshow' : 'Pause slideshow'}
-          style={{
-            width: '28px', height: '28px', borderRadius: '50%',
-            background: 'rgba(255,255,255,0.25)', border: 'none',
-            cursor: 'pointer', display: 'flex', alignItems: 'center',
-            justifyContent: 'center', marginLeft: '4px', flexShrink: 0,
-          }}
-        >
-          {paused ? (
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff">
-              <polygon points="5,3 19,12 5,21"/>
-            </svg>
-          ) : (
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff">
-              <rect x="6" y="4" width="4" height="16"/>
-              <rect x="14" y="4" width="4" height="16"/>
-            </svg>
-          )}
-        </button>
       </div>
     </section>
   )
