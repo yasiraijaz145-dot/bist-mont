@@ -341,6 +341,10 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
     .category-nav-bar { top: var(--header-h-mobile); }
     .hero-slide img { height: 360px; }
     .hero-slide-content { padding: 20px 24px; padding-top: 50px; }
+    .slider-arrow { top: 30px; transform: none; width: 36px; height: 36px; }
+    .slider-arrow:hover { transform: scale(1.05); }
+    .slider-arrow.prev { left: 16px; }
+    .slider-arrow.next { right: 16px; }
     .slide-1 h2, .slide-2 h2, .slide-3 h2 { font-size: 1.8rem; line-height: 1.15; }
     .slide-1 .slide-sub, .slide-2 .slide-sub, .slide-3 .slide-sub { font-size: 12px; }
     .slide-1 .slide-name, .slide-2 .slide-name, .slide-3 .slide-name { display: none; }
