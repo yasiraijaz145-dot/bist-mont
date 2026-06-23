@@ -7,6 +7,16 @@ function generateOrderNumber(): string {
   return `BM-${ts}-${rand}`
 }
 
+export async function GET() {
+  try {
+    const db = getDB()
+    const [rows] = await db.execute('SELECT * FROM orders ORDER BY created_at DESC')
+    return NextResponse.json({ ok: true, orders: rows })
+  } catch (e) {
+    return NextResponse.json({ ok: false, error: String(e) }, { status: 500 })
+  }
+}
+
 export async function POST(req: NextRequest) {
   const body = await req.json()
   const {

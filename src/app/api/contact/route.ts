@@ -1,6 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getDB } from '@/lib/db'
 
+export async function GET() {
+  try {
+    const db = getDB()
+    const [rows] = await db.execute('SELECT * FROM contact_submissions ORDER BY created_at DESC')
+    return NextResponse.json({ ok: true, submissions: rows })
+  } catch (e) {
+    return NextResponse.json({ ok: false, error: String(e) }, { status: 500 })
+  }
+}
+
 export async function POST(req: NextRequest) {
   const { name, email, subject, message } = await req.json()
   if (!name || !email || !message) {
