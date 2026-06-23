@@ -84,16 +84,16 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
               onClick={() => setActiveFilter(key)}
               style={{
                 padding: '9px 18px',
-                border: `1.5px solid ${activeFilter === key ? '#e85d04' : '#ddd2c4'}`,
-                background: activeFilter === key ? '#e85d04' : 'transparent',
-                color: activeFilter === key ? '#fff' : '#1a1a1a',
+                border: `1.5px solid ${activeFilter === key ? '#6e2a32' : '#ddd2c4'}`,
+                background: activeFilter === key ? '#6e2a32' : 'transparent',
+                color: activeFilter === key ? '#fff' : '#1c1815',
                 borderRadius: '4px',
                 fontSize: '11.5px',
                 fontWeight: 700,
                 letterSpacing: '0.6px',
                 textTransform: 'uppercase',
                 cursor: 'pointer',
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Jost', sans-serif",
                 boxShadow: activeFilter === key ? '0 4px 12px rgba(232,93,4,0.3)' : 'none',
                 transition: 'all 0.15s',
               }}
@@ -110,14 +110,14 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
               padding: '9px 16px',
               border: '1.5px solid #ddd2c4',
               background: 'transparent',
-              color: '#1a1a1a',
+              color: '#1c1815',
               borderRadius: '4px',
               fontSize: '10.5px',
               fontWeight: 700,
               letterSpacing: '0.6px',
               textTransform: 'uppercase',
               cursor: 'pointer',
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Jost', sans-serif",
               display: 'flex',
               alignItems: 'center',
               gap: '7px',
@@ -139,9 +139,9 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
               gap: '24px',
               flexWrap: 'wrap',
               padding: '16px 20px',
-              background: '#f9f5f0',
+              background: '#f7f2ec',
               borderRadius: '8px',
-              border: '1px solid #e8e0d5',
+              border: '1px solid #ddd2c4',
             }}>
               {LEGEND.map(({ badge, label, desc }) => (
                 <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -152,7 +152,7 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
                     minWidth: '32px',
                     height: '24px',
                     padding: '0 6px',
-                    background: '#1a1a1a',
+                    background: '#1c1815',
                     color: '#fff',
                     fontSize: '11px',
                     fontWeight: 700,
@@ -161,8 +161,8 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
                     {badge}
                   </span>
                   <div>
-                    <div style={{ fontSize: '11.5px', fontWeight: 700, letterSpacing: '0.5px', textTransform: 'uppercase', color: '#1a1a1a' }}>{label}</div>
-                    <div style={{ fontSize: '11px', color: '#888' }}>{desc}</div>
+                    <div style={{ fontSize: '11.5px', fontWeight: 700, letterSpacing: '0.5px', textTransform: 'uppercase', color: '#1c1815' }}>{label}</div>
+                    <div style={{ fontSize: '11px', color: '#8a7d6e' }}>{desc}</div>
                   </div>
                 </div>
               ))}
@@ -176,8 +176,8 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
         <div className="menu-cat-nav" style={{
           position: 'sticky',
           zIndex: 799,
-          background: '#f9f5f0',
-          borderBottom: '1px solid #e8e0d5',
+          background: '#f7f2ec',
+          borderBottom: '1px solid #ddd2c4',
           overflowX: 'auto',
           scrollbarWidth: 'none',
         }}>
@@ -192,9 +192,9 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
                   fontWeight: 700,
                   letterSpacing: '1px',
                   textTransform: 'uppercase',
-                  color: activeSection === cat ? '#e85d04' : '#888',
+                  color: activeSection === cat ? '#6e2a32' : '#8a7d6e',
                   textDecoration: 'none',
-                  borderBottom: `2px solid ${activeSection === cat ? '#e85d04' : 'transparent'}`,
+                  borderBottom: `2px solid ${activeSection === cat ? '#6e2a32' : 'transparent'}`,
                   whiteSpace: 'nowrap',
                   transition: 'color 0.2s, border-color 0.2s',
                 }}
@@ -208,12 +208,12 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
 
       <main style={{ paddingTop: '20px', minHeight: '80vh' }}>
         {Object.keys(filtered).length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '80px 40px', color: '#888' }}>
+          <div style={{ textAlign: 'center', padding: '80px 40px', color: '#8a7d6e' }}>
             <div style={{ fontSize: '3rem', marginBottom: '12px' }}>🍽️</div>
             <p style={{ fontSize: '16px' }}>No items match this filter.</p>
             <button
               onClick={() => setActiveFilter('')}
-              style={{ marginTop: '16px', padding: '10px 24px', background: '#e85d04', color: '#fff', border: 'none', borderRadius: '20px', fontSize: '13px', fontWeight: 700, cursor: 'pointer' }}
+              style={{ marginTop: '16px', padding: '10px 24px', background: '#6e2a32', color: '#fff', border: 'none', borderRadius: '20px', fontSize: '13px', fontWeight: 700, cursor: 'pointer' }}
             >
               Show all items
             </button>
@@ -239,13 +239,13 @@ export default function MenuClient({ menuByCategory }: { menuByCategory: Record<
           style={{
             position: 'fixed', bottom: '32px', right: '32px', zIndex: 999,
             width: '48px', height: '48px', borderRadius: '50%',
-            background: '#1a1a1a', color: '#fff', border: 'none',
+            background: '#1c1815', color: '#fff', border: 'none',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             cursor: 'pointer', boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
             transition: 'background 0.2s',
           }}
-          onMouseEnter={e => (e.currentTarget.style.background = '#e85d04')}
-          onMouseLeave={e => (e.currentTarget.style.background = '#1a1a1a')}
+          onMouseEnter={e => (e.currentTarget.style.background = '#6e2a32')}
+          onMouseLeave={e => (e.currentTarget.style.background = '#1c1815')}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
             <path d="M18 15l-6-6-6 6"/>

@@ -19,9 +19,9 @@ const CAT_LABELS: Record<string,string> = {
 }
 
 const SLIDES = [
-  { bg: '#e85d04', img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1400&q=85', tag: 'NEW ARRIVAL', title: 'Bold, Rich\nUnforgettable', sub: 'A Wagyu experience crafted for those who demand the extraordinary', item: 'TRUFFLE ROYALE', link: '#cat-burgers' },
-  { bg: '#ff6b35', img: 'https://images.unsplash.com/photo-1604604994333-f1b0e9471186?w=1400&q=85', tag: "CHEF'S SPECIAL", title: 'Big Flavor\nLives Inside', sub: 'French duck breast perfected with cherry gastrique', item: 'MAGRET DE CANARD', link: '#cat-mains' },
-  { bg: '#c0392b', img: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1400&q=85', tag: 'FRESH TODAY', title: 'Where Fresh\nLayers Meet', sub: 'Pan-roasted Atlantic salmon with beurre blanc', item: 'SAUMON ATLANTIQUE', link: '#cat-mains' },
+  { bg: '#6e2a32', img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1400&q=85', tag: 'NEW ARRIVAL', title: 'Bold, Rich\nUnforgettable', sub: 'A Wagyu experience crafted for those who demand the extraordinary', item: 'TRUFFLE ROYALE', link: '#cat-burgers' },
+  { bg: '#8a3540', img: 'https://images.unsplash.com/photo-1604604994333-f1b0e9471186?w=1400&q=85', tag: "CHEF'S SPECIAL", title: 'Big Flavor\nLives Inside', sub: 'French duck breast perfected with cherry gastrique', item: 'MAGRET DE CANARD', link: '#cat-mains' },
+  { bg: '#4f1d23', img: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1400&q=85', tag: 'FRESH TODAY', title: 'Where Fresh\nLayers Meet', sub: 'Pan-roasted Atlantic salmon with beurre blanc', item: 'SAUMON ATLANTIQUE', link: '#cat-mains' },
 ]
 
 const PRESS = ['Le Devoir', 'Montréal Gazette', 'Food & Wine', 'Condé Nast Traveller', 'CBC Arts']
@@ -58,7 +58,7 @@ export default async function HomePage() {
 
       <HeroSlider slides={SLIDES} />
 
-      <div style={{ background: '#f9f5f0', borderTop: '1px solid #e8e0d5', borderBottom: '1px solid #e8e0d5', padding: '20px 24px' }}>
+      <div style={{ background: '#f7f2ec', borderTop: '1px solid #ddd2c4', borderBottom: '1px solid #ddd2c4', padding: '20px 24px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '40px', flexWrap: 'wrap', justifyContent: 'center' }}>
           <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#bbb', whiteSpace: 'nowrap' }}>As seen in</span>
           {PRESS.map(pub => (
@@ -90,13 +90,13 @@ export default async function HomePage() {
       </main>
 
       {/* About teaser */}
-      <section style={{ background: '#1a1a1a', padding: '100px 0' }}>
+      <section style={{ background: '#1c1815', padding: '100px 0' }}>
         <div className="about-teaser-grid">
           <div>
-            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '20px' }}>Our Story</p>
+            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#6e2a32', marginBottom: '20px' }}>Our Story</p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2.2rem, 4vw, 3.5rem)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px' }}>
               Rooted in Québec,<br />
-              <em style={{ color: '#e85d04' }}>inspired by Paris.</em>
+              <em style={{ color: '#6e2a32' }}>inspired by Paris.</em>
             </h2>
             <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, marginBottom: '16px', maxWidth: '480px' }}>
               Chef Antoine Mercier founded Bistro Montréal in 2009 with a singular vision: to bring the precision of French technique to the remarkable produce of Québec&apos;s farms and waters.
@@ -108,13 +108,13 @@ export default async function HomePage() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '10px',
-              color: '#e85d04',
+              color: '#6e2a32',
               fontSize: '13px',
               fontWeight: 700,
               letterSpacing: '1.5px',
               textTransform: 'uppercase',
               textDecoration: 'none',
-              borderBottom: '1px solid #e85d04',
+              borderBottom: '1px solid #6e2a32',
               paddingBottom: '2px',
             }}>
               Meet the team →
@@ -135,7 +135,7 @@ export default async function HomePage() {
       </section>
 
       {/* Stats band */}
-      <section style={{ background: '#f9f5f0', borderTop: '4px solid #e85d04' }}>
+      <section style={{ background: '#f7f2ec', borderTop: '4px solid #6e2a32' }}>
         <div className="stats-grid" style={{ maxWidth: '1280px', margin: '0 auto' }}>
           {[
             { stat: '2009', label: 'Founded' },
@@ -143,9 +143,9 @@ export default async function HomePage() {
             { stat: '15+', label: 'Farm Partners' },
             { stat: '7', label: 'Course Tasting Menu' },
           ].map(({ stat, label }) => (
-            <div key={label} style={{ padding: '48px 32px', textAlign: 'center', borderRight: '1px solid #e8e0d5' }}>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.8rem', fontWeight: 700, color: '#e85d04', marginBottom: '8px' }}>{stat}</div>
-              <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', color: '#888' }}>{label}</div>
+            <div key={label} style={{ padding: '48px 32px', textAlign: 'center', borderRight: '1px solid #ddd2c4' }}>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.8rem', fontWeight: 700, color: '#6e2a32', marginBottom: '8px' }}>{stat}</div>
+              <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', color: '#8a7d6e' }}>{label}</div>
             </div>
           ))}
         </div>
@@ -154,16 +154,16 @@ export default async function HomePage() {
       {/* Testimonials */}
       <section style={{ background: '#fff', padding: '100px 0' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
-          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', textAlign: 'center', marginBottom: '16px' }}>Guest Voices</p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#1a1a1a', textAlign: 'center', marginBottom: '60px' }}>
+          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#6e2a32', textAlign: 'center', marginBottom: '16px' }}>Guest Voices</p>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#1c1815', textAlign: 'center', marginBottom: '60px' }}>
             What our guests say
           </h2>
           <div className="testimonials-grid" style={{ gap: '32px' }}>
             {TESTIMONIALS.map(({ quote, author, source }) => (
-              <div key={author} style={{ padding: '40px 32px', background: '#f9f5f0', position: 'relative' }}>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '5rem', color: '#e85d04', lineHeight: 0.6, marginBottom: '24px', opacity: 0.4 }}>&ldquo;</div>
-                <p style={{ fontSize: '16px', color: '#1a1a1a', lineHeight: 1.7, fontStyle: 'italic', marginBottom: '24px' }}>{quote}</p>
-                <div style={{ fontSize: '13px', fontWeight: 700, color: '#1a1a1a' }}>{author}</div>
+              <div key={author} style={{ padding: '40px 32px', background: '#f7f2ec', position: 'relative' }}>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '5rem', color: '#6e2a32', lineHeight: 0.6, marginBottom: '24px', opacity: 0.4 }}>&ldquo;</div>
+                <p style={{ fontSize: '16px', color: '#1c1815', lineHeight: 1.7, fontStyle: 'italic', marginBottom: '24px' }}>{quote}</p>
+                <div style={{ fontSize: '13px', fontWeight: 700, color: '#1c1815' }}>{author}</div>
                 <div style={{ fontSize: '11px', color: '#bbb', marginTop: '2px' }}>{source}</div>
               </div>
             ))}
@@ -173,7 +173,7 @@ export default async function HomePage() {
 
       {/* Reservation CTA band */}
       <section style={{
-        background: 'linear-gradient(135deg, #e85d04 0%, #c44b00 100%)',
+        background: 'linear-gradient(135deg, #6e2a32 0%, #4f1d23 100%)',
         padding: '80px 40px',
         textAlign: 'center',
       }}>
@@ -187,7 +187,7 @@ export default async function HomePage() {
         <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link href="/reservations" style={{
             background: '#fff',
-            color: '#e85d04',
+            color: '#6e2a32',
             padding: '16px 40px',
             fontSize: '13px',
             fontWeight: 800,

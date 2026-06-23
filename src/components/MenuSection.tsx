@@ -49,7 +49,7 @@ export default function MenuSection({ cat, label, items }: { cat: string; label:
                   <div className="menu-card-footer">
                     <span className="menu-card-price">${Number(item.price).toFixed(2)}</span>
                     {tags.length > 0 && (
-                      <span style={{ fontSize: '11px', color: '#888' }}>
+                      <span style={{ fontSize: '11px', color: '#8a7d6e' }}>
                         {tags.map(t => t === 'vegan' ? '🌱' : t === 'spicy' ? '🌶️' : t === 'gluten-free' ? 'GF' : '').join(' ')}
                       </span>
                     )}

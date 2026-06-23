@@ -100,12 +100,12 @@ export default function ReservationsPage() {
     width: '100%',
     padding: '0 0 14px',
     border: 'none',
-    borderBottom: `1.5px solid ${focused === name ? '#1a1a1a' : '#e8e0d5'}`,
+    borderBottom: `1.5px solid ${focused === name ? '#1c1815' : '#ddd2c4'}`,
     fontSize: '16px',
-    color: '#1a1a1a',
+    color: '#1c1815',
     background: 'transparent',
     outline: 'none',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: "'Jost', sans-serif",
     transition: 'border-color 0.2s',
   })
 
@@ -115,7 +115,7 @@ export default function ReservationsPage() {
     fontWeight: 700,
     letterSpacing: '2.5px',
     textTransform: 'uppercase',
-    color: focused === name ? '#1a1a1a' : '#bbb',
+    color: focused === name ? '#1c1815' : '#bbb',
     marginBottom: '10px',
     transition: 'color 0.2s',
   })
@@ -126,27 +126,27 @@ export default function ReservationsPage() {
       <main style={{ paddingTop: '110px', background: '#fff' }}>
 
         {/* HERO */}
-        <section style={{ borderBottom: '1px solid #e8e0d5', padding: '72px 0 60px', position: 'relative', overflow: 'hidden', background: 'linear-gradient(135deg, #fdf9f6 0%, #fff 60%)' }}>
+        <section style={{ borderBottom: '1px solid #ddd2c4', padding: '72px 0 60px', position: 'relative', overflow: 'hidden', background: 'linear-gradient(135deg, #fdf9f6 0%, #fff 60%)' }}>
           <div style={{ position: 'absolute', top: 0, right: 0, width: '340px', height: '100%', background: 'linear-gradient(135deg, transparent 40%, #fdf4ed 100%)', pointerEvents: 'none' }} />
           <div style={{ position: 'absolute', top: '32px', right: '48px', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px', pointerEvents: 'none', opacity: 0.6 }}>
-            <div style={{ width: '48px', height: '1.5px', background: '#e85d04' }} />
-            <div style={{ width: '32px', height: '1.5px', background: '#e85d04' }} />
-            <div style={{ width: '20px', height: '1.5px', background: '#e85d04' }} />
+            <div style={{ width: '48px', height: '1.5px', background: '#6e2a32' }} />
+            <div style={{ width: '32px', height: '1.5px', background: '#6e2a32' }} />
+            <div style={{ width: '20px', height: '1.5px', background: '#6e2a32' }} />
           </div>
           <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 40px', position: 'relative' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '80px' }} className="res-hero-grid">
               <div style={{ flex: 1 }}>
-                <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '20px' }}>Reservations</p>
-                <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, color: '#1a1a1a', lineHeight: 1.05, letterSpacing: '-0.02em', maxWidth: '700px' }}>
+                <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#6e2a32', marginBottom: '20px' }}>Reservations</p>
+                <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, color: '#1c1815', lineHeight: 1.05, letterSpacing: '-0.02em', maxWidth: '700px' }}>
                   Your evening<br />
-                  <em style={{ color: '#e85d04', fontStyle: 'italic' }}>starts here.</em>
+                  <em style={{ color: '#6e2a32', fontStyle: 'italic' }}>starts here.</em>
                 </h1>
-                <p style={{ marginTop: '28px', fontSize: '16px', color: '#888', maxWidth: '420px', lineHeight: 1.7 }}>
+                <p style={{ marginTop: '28px', fontSize: '16px', color: '#8a7d6e', maxWidth: '420px', lineHeight: 1.7 }}>
                   For parties of 8 or more, call us at{' '}
-                  <a href="tel:+15145550192" style={{ color: '#1a1a1a', fontWeight: 600, textDecoration: 'none' }}>+1 (514) 555-0192</a>
+                  <a href="tel:+15145550192" style={{ color: '#1c1815', fontWeight: 600, textDecoration: 'none' }}>+1 (514) 555-0192</a>
                 </p>
               </div>
-              <div className="res-hero-aside" style={{ display: 'flex', flexDirection: 'column', gap: '0', minWidth: '220px', borderLeft: '1px solid #e8e0d5', paddingLeft: '48px' }}>
+              <div className="res-hero-aside" style={{ display: 'flex', flexDirection: 'column', gap: '0', minWidth: '220px', borderLeft: '1px solid #ddd2c4', paddingLeft: '48px' }}>
                 {([
                   { label: 'Open', value: 'Tue – Sun' },
                   { label: 'Dinner', value: '5:00 – 10:30 PM' },
@@ -154,7 +154,7 @@ export default function ReservationsPage() {
                 ] as { label: string; value: string }[]).map(({ label, value }) => (
                   <div key={label} style={{ padding: '16px 0', borderBottom: '1px solid #f0ebe3' }}>
                     <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#bbb', marginBottom: '4px' }}>{label}</div>
-                    <div style={{ fontSize: '14px', color: '#1a1a1a', fontWeight: 500 }}>{value}</div>
+                    <div style={{ fontSize: '14px', color: '#1c1815', fontWeight: 500 }}>{value}</div>
                   </div>
                 ))}
               </div>
@@ -166,23 +166,23 @@ export default function ReservationsPage() {
         <div style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 40px 100px' }}>
 
           {success ? (
-            <div style={{ borderLeft: '3px solid #1a1a1a', paddingLeft: '32px' }}>
+            <div style={{ borderLeft: '3px solid #1c1815', paddingLeft: '32px' }}>
               <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#bbb', marginBottom: '20px' }}>Confirmed</p>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '12px', lineHeight: 1.2 }}>
+              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: 700, color: '#1c1815', marginBottom: '12px', lineHeight: 1.2 }}>
                 Your table is reserved.
               </p>
-              <p style={{ fontSize: '15px', color: '#888', lineHeight: 1.7, marginBottom: '32px' }}>
+              <p style={{ fontSize: '15px', color: '#8a7d6e', lineHeight: 1.7, marginBottom: '32px' }}>
                 A confirmation has been sent to your email. We look forward to hosting you.
               </p>
-              <Link href="/menu" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: '#1a1a1a', color: '#fff', padding: '16px 36px', fontSize: '12px', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', textDecoration: 'none' }}>
+              <Link href="/menu" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: '#1c1815', color: '#fff', padding: '16px 36px', fontSize: '12px', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', textDecoration: 'none' }}>
                 Browse the menu →
               </Link>
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
               {error && (
-                <div style={{ borderLeft: '3px solid #e85d04', paddingLeft: '20px', marginBottom: '40px', padding: '16px 20px', background: '#fff5f0' }}>
-                  <p style={{ fontSize: '14px', color: '#e85d04', fontWeight: 500 }}>{error}</p>
+                <div style={{ borderLeft: '3px solid #6e2a32', paddingLeft: '20px', marginBottom: '40px', padding: '16px 20px', background: '#fdf9f6' }}>
+                  <p style={{ fontSize: '14px', color: '#6e2a32', fontWeight: 500 }}>{error}</p>
                 </div>
               )}
 
@@ -217,8 +217,8 @@ export default function ReservationsPage() {
                     <option value="8+">8+ Guests</option>
                   </select>
                   {partySize === '8+' && (
-                    <p style={{ fontSize: '12px', color: '#e85d04', marginTop: '10px', fontWeight: 500 }}>
-                      Please call us at <a href="tel:+15145550192" style={{ color: '#e85d04', fontWeight: 700 }}>+1 (514) 555-0192</a> to arrange.
+                    <p style={{ fontSize: '12px', color: '#6e2a32', marginTop: '10px', fontWeight: 500 }}>
+                      Please call us at <a href="tel:+15145550192" style={{ color: '#6e2a32', fontWeight: 700 }}>+1 (514) 555-0192</a> to arrange.
                     </p>
                   )}
                 </div>
@@ -227,7 +227,7 @@ export default function ReservationsPage() {
               {/* Time */}
               <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#bbb', marginBottom: '8px' }}>Select a time</p>
               <p style={{ fontSize: '12px', color: '#bbb', marginBottom: '20px' }}>
-                <span style={{ display: 'inline-block', width: '10px', height: '10px', background: '#e8e0d5', borderRadius: '2px', marginRight: '6px', verticalAlign: 'middle' }}/>Greyed = fully booked
+                <span style={{ display: 'inline-block', width: '10px', height: '10px', background: '#ddd2c4', borderRadius: '2px', marginRight: '6px', verticalAlign: 'middle' }}/>Greyed = fully booked
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '56px' }}>
                 {TIME_SLOTS.map(t => {
@@ -240,13 +240,13 @@ export default function ReservationsPage() {
                       onClick={() => !unavail && setSelTime(t)}
                       style={{
                         padding: '10px 18px',
-                        border: `1.5px solid ${selected ? '#1a1a1a' : unavail ? '#f0ebe3' : '#e8e0d5'}`,
-                        background: selected ? '#1a1a1a' : unavail ? '#fafafa' : 'transparent',
-                        color: selected ? '#fff' : unavail ? '#ccc' : '#888',
+                        border: `1.5px solid ${selected ? '#1c1815' : unavail ? '#f0ebe3' : '#ddd2c4'}`,
+                        background: selected ? '#1c1815' : unavail ? '#fafafa' : 'transparent',
+                        color: selected ? '#fff' : unavail ? '#ccc' : '#8a7d6e',
                         fontSize: '13px',
                         fontWeight: 500,
                         cursor: unavail ? 'not-allowed' : 'pointer',
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Jost', sans-serif",
                         letterSpacing: '0.5px',
                         transition: 'all 0.15s',
                         textDecoration: unavail ? 'line-through' : 'none',
@@ -271,14 +271,14 @@ export default function ReservationsPage() {
                     onKeyDown={e => e.key === 'Enter' && setSelSeating(key)}
                     style={{
                       padding: '24px 16px',
-                      border: `1.5px solid ${selSeating === key ? '#1a1a1a' : '#e8e0d5'}`,
-                      background: selSeating === key ? '#1a1a1a' : 'transparent',
+                      border: `1.5px solid ${selSeating === key ? '#1c1815' : '#ddd2c4'}`,
+                      background: selSeating === key ? '#1c1815' : 'transparent',
                       cursor: 'pointer',
                       textAlign: 'center',
                       transition: 'all 0.15s',
                     }}
                   >
-                    <div style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.5px', color: selSeating === key ? '#fff' : '#1a1a1a', marginBottom: '4px' }}>{label}</div>
+                    <div style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.5px', color: selSeating === key ? '#fff' : '#1c1815', marginBottom: '4px' }}>{label}</div>
                     <div style={{ fontSize: '11px', color: selSeating === key ? 'rgba(255,255,255,0.6)' : '#bbb' }}>{sub}</div>
                   </div>
                 ))}
@@ -331,18 +331,18 @@ export default function ReservationsPage() {
                 style={{
                   alignSelf: 'flex-start',
                   display: 'inline-flex', alignItems: 'center', gap: '12px',
-                  background: '#1a1a1a', color: '#fff',
+                  background: '#1c1815', color: '#fff',
                   padding: '18px 48px', border: 'none',
                   fontSize: '13px', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase',
                   cursor: (loading || partySize === '8+') ? 'not-allowed' : 'pointer',
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Jost', sans-serif",
                   opacity: (loading || partySize === '8+') ? 0.5 : 1,
                   transition: 'background 0.2s',
                   width: '100%',
                   justifyContent: 'center',
                 }}
-                onMouseEnter={e => { if (!loading && partySize !== '8+') e.currentTarget.style.background = '#e85d04' }}
-                onMouseLeave={e => { e.currentTarget.style.background = '#1a1a1a' }}
+                onMouseEnter={e => { if (!loading && partySize !== '8+') e.currentTarget.style.background = '#6e2a32' }}
+                onMouseLeave={e => { e.currentTarget.style.background = '#1c1815' }}
               >
                 {loading ? 'Reserving…' : 'Confirm reservation'} <span style={{ fontSize: '18px' }}>→</span>
               </button>
@@ -357,7 +357,7 @@ export default function ReservationsPage() {
           .res-grid-2 { grid-template-columns: 1fr !important; gap: 32px !important; }
           .res-grid-3 { grid-template-columns: 1fr !important; gap: 8px !important; }
           .res-hero-grid { flex-direction: column !important; gap: 40px !important; }
-          .res-hero-aside { border-left: none !important; border-top: 1px solid #e8e0d5 !important; padding-left: 0 !important; padding-top: 32px !important; min-width: unset !important; }
+          .res-hero-aside { border-left: none !important; border-top: 1px solid #ddd2c4 !important; padding-left: 0 !important; padding-top: 32px !important; min-width: unset !important; }
         }
       `}</style>
     </>

@@ -135,7 +135,7 @@ export default function Footer() {
             />
             <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
           </form>
-          {nlMsg && <p style={{ fontSize: '12px', color: '#e85d04', marginTop: '8px' }}>{nlMsg}</p>}
+          {nlMsg && <p style={{ fontSize: '12px', color: '#6e2a32', marginTop: '8px' }}>{nlMsg}</p>}
           <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.25)', marginTop: '12px', lineHeight: 1.6 }}>
             By subscribing you agree to our{' '}
             <Link href="/privacy" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'underline' }}>Privacy Policy</Link>.

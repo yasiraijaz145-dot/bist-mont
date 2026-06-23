@@ -57,7 +57,7 @@ export default function PrivateDiningPage() {
           />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7))' }} />
           <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '60px' }}>
-            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '16px' }}>Private Dining</p>
+            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#6e2a32', marginBottom: '16px' }}>Private Dining</p>
             <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: '16px' }}>
               Your event.<br />Our stage.
             </h1>
@@ -68,12 +68,12 @@ export default function PrivateDiningPage() {
         </section>
 
         {/* Occasions */}
-        <section style={{ background: '#f9f5f0', padding: '60px 0', borderBottom: '1px solid #e8e0d5' }}>
+        <section style={{ background: '#f7f2ec', padding: '60px 0', borderBottom: '1px solid #ddd2c4' }}>
           <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
-            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', textAlign: 'center', marginBottom: '28px' }}>Perfect for</p>
+            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#6e2a32', textAlign: 'center', marginBottom: '28px' }}>Perfect for</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
               {OCCASIONS.map((label) => (
-                <div key={label} style={{ padding: '10px 22px', background: 'transparent', border: '1px solid #c8bfb5', fontSize: '13px', fontWeight: 600, letterSpacing: '0.5px', color: '#555', fontFamily: "'DM Sans', sans-serif" }}>
+                <div key={label} style={{ padding: '10px 22px', background: 'transparent', border: '1px solid #c8bfb5', fontSize: '13px', fontWeight: 600, letterSpacing: '0.5px', color: '#6f6358', fontFamily: "'Jost', sans-serif" }}>
                   {label}
                 </div>
               ))}
@@ -83,8 +83,8 @@ export default function PrivateDiningPage() {
 
         {/* Spaces */}
         <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '100px 40px' }}>
-          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', textAlign: 'center', marginBottom: '16px' }}>Our Spaces</p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#1a1a1a', textAlign: 'center', marginBottom: '60px' }}>
+          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#6e2a32', textAlign: 'center', marginBottom: '16px' }}>Our Spaces</p>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#1c1815', textAlign: 'center', marginBottom: '60px' }}>
             Choose your setting
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
@@ -95,12 +95,12 @@ export default function PrivateDiningPage() {
                   <img src={img} alt={name} style={{ width: '100%', height: '380px', objectFit: 'cover', display: 'block' }} />
                 </div>
                 <div className="space-text">
-                  <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '12px' }}>{capacity}</p>
-                  <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.6rem, 4vw, 2rem)', fontWeight: 700, color: '#1a1a1a', marginBottom: '16px' }}>{name}</h3>
+                  <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#6e2a32', marginBottom: '12px' }}>{capacity}</p>
+                  <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.6rem, 4vw, 2rem)', fontWeight: 700, color: '#1c1815', marginBottom: '16px' }}>{name}</h3>
                   <p style={{ fontSize: '16px', color: '#666', lineHeight: 1.7, marginBottom: '24px' }}>{desc}</p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                     {features.map(f => (
-                      <span key={f} style={{ padding: '6px 14px', background: '#f9f5f0', border: '1px solid #e8e0d5', fontSize: '12px', fontWeight: 600, color: '#555' }}>{f}</span>
+                      <span key={f} style={{ padding: '6px 14px', background: '#f7f2ec', border: '1px solid #ddd2c4', fontSize: '12px', fontWeight: 600, color: '#6f6358' }}>{f}</span>
                     ))}
                   </div>
                 </div>
@@ -110,8 +110,8 @@ export default function PrivateDiningPage() {
         </section>
 
         {/* CTA / Inquiry */}
-        <section style={{ background: '#1a1a1a', padding: '80px 40px', textAlign: 'center' }}>
-          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '16px' }}>Get in Touch</p>
+        <section style={{ background: '#1c1815', padding: '80px 40px', textAlign: 'center' }}>
+          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#6e2a32', marginBottom: '16px' }}>Get in Touch</p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#fff', marginBottom: '16px' }}>
             Ready to plan your event?
           </h2>
@@ -119,7 +119,7 @@ export default function PrivateDiningPage() {
             Our events team responds within 24 hours. Tell us your date, guest count, and vision — we&apos;ll handle the rest.
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/contact" style={{ background: '#e85d04', color: '#fff', padding: '16px 40px', fontSize: '13px', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', textDecoration: 'none', borderRadius: '4px' }}>
+            <Link href="/contact" style={{ background: '#6e2a32', color: '#fff', padding: '16px 40px', fontSize: '13px', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', textDecoration: 'none', borderRadius: '4px' }}>
               Send an Inquiry
             </Link>
             <a href="tel:+15145550192" style={{ background: 'transparent', color: '#fff', padding: '16px 40px', fontSize: '13px', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', textDecoration: 'none', borderRadius: '4px', border: '2px solid rgba(255,255,255,0.3)' }}>

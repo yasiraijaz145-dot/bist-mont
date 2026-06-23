@@ -51,7 +51,7 @@ export default function CheckoutPage() {
         <TopBar />
         <main style={{ paddingTop: '110px', textAlign: 'center', padding: '120px 24px' }}>
           <h2 style={{ fontFamily: "'Playfair Display',serif" }}>Your cart is empty</h2>
-          <Link href="/menu" style={{ display: 'inline-block', marginTop: '16px', background: '#e85d04', color: '#fff', padding: '12px 28px', borderRadius: '8px', fontWeight: 700 }}>Browse Menu</Link>
+          <Link href="/menu" style={{ display: 'inline-block', marginTop: '16px', background: '#6e2a32', color: '#fff', padding: '12px 28px', borderRadius: '8px', fontWeight: 700 }}>Browse Menu</Link>
         </main>
         <Footer />
       </>
@@ -138,12 +138,12 @@ export default function CheckoutPage() {
     width: '100%',
     padding: '0 0 14px',
     border: 'none',
-    borderBottom: `1.5px solid ${hasError ? '#e85d04' : focused === name ? '#1a1a1a' : '#e8e0d5'}`,
+    borderBottom: `1.5px solid ${hasError ? '#6e2a32' : focused === name ? '#1c1815' : '#ddd2c4'}`,
     fontSize: '16px',
-    color: '#1a1a1a',
+    color: '#1c1815',
     background: 'transparent',
     outline: 'none',
-    fontFamily: "'DM Sans', sans-serif",
+    fontFamily: "'Jost', sans-serif",
     transition: 'border-color 0.2s',
   })
 
@@ -153,14 +153,14 @@ export default function CheckoutPage() {
     fontWeight: 700 as const,
     letterSpacing: '2.5px',
     textTransform: 'uppercase' as const,
-    color: fieldErrors[name] ? '#e85d04' : focused === name ? '#1a1a1a' : '#bbb',
+    color: fieldErrors[name] ? '#6e2a32' : focused === name ? '#1c1815' : '#bbb',
     marginBottom: '10px',
     transition: 'color 0.2s',
   })
 
   const errorText = (name: string) =>
     fieldErrors[name] ? (
-      <p style={{ fontSize: '12px', color: '#e85d04', marginTop: '8px' }}>{fieldErrors[name]}</p>
+      <p style={{ fontSize: '12px', color: '#6e2a32', marginTop: '8px' }}>{fieldErrors[name]}</p>
     ) : null
 
   const sectionLabel = (text: string) => (
@@ -172,23 +172,23 @@ export default function CheckoutPage() {
       <TopBar />
       <main style={{ paddingTop: '160px', background: '#fff' }}>
 
-        <section style={{ borderBottom: '1px solid #e8e0d5', padding: '40px 0 60px', position: 'relative', overflow: 'hidden' }}>
+        <section style={{ borderBottom: '1px solid #ddd2c4', padding: '40px 0 60px', position: 'relative', overflow: 'hidden' }}>
           <div style={{
             position: 'absolute', right: '-20px', top: '-30px',
             fontFamily: "'Playfair Display', serif",
             fontSize: 'clamp(160px, 22vw, 300px)',
             fontWeight: 900, color: 'transparent',
-            WebkitTextStroke: '1px #e8e0d5',
+            WebkitTextStroke: '1px #ddd2c4',
             lineHeight: 1, userSelect: 'none', pointerEvents: 'none',
           }}>07</div>
           <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 40px' }}>
-            <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '20px' }}>Checkout</p>
-            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, color: '#1a1a1a', lineHeight: 1.05, letterSpacing: '-0.02em', maxWidth: '700px' }}>
+            <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', color: '#6e2a32', marginBottom: '20px' }}>Checkout</p>
+            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, color: '#1c1815', lineHeight: 1.05, letterSpacing: '-0.02em', maxWidth: '700px' }}>
               Almost<br />
-              <em style={{ color: '#e85d04', fontStyle: 'italic' }}>at the table.</em>
+              <em style={{ color: '#6e2a32', fontStyle: 'italic' }}>at the table.</em>
             </h1>
-            <p style={{ marginTop: '28px', fontSize: '16px', color: '#888', maxWidth: '420px', lineHeight: 1.7 }}>
-              Questions about your order? Call us at <span style={{ color: '#1a1a1a', fontWeight: 500 }}>+1 (514) 555-0192</span>
+            <p style={{ marginTop: '28px', fontSize: '16px', color: '#8a7d6e', maxWidth: '420px', lineHeight: 1.7 }}>
+              Questions about your order? Call us at <span style={{ color: '#1c1815', fontWeight: 500 }}>+1 (514) 555-0192</span>
             </p>
           </div>
         </section>
@@ -199,8 +199,8 @@ export default function CheckoutPage() {
 
               <div>
                 {error && (
-                  <div style={{ borderLeft: '3px solid #e85d04', paddingLeft: '20px', marginBottom: '48px' }}>
-                    <p style={{ fontSize: '14px', color: '#e85d04' }}>{error}</p>
+                  <div style={{ borderLeft: '3px solid #6e2a32', paddingLeft: '20px', marginBottom: '48px' }}>
+                    <p style={{ fontSize: '14px', color: '#6e2a32' }}>{error}</p>
                   </div>
                 )}
 
@@ -235,11 +235,11 @@ export default function CheckoutPage() {
                     <div key={t} onClick={() => setOrderType(t)}
                       style={{
                         padding: '24px 16px',
-                        border: `1.5px solid ${orderType === t ? '#1a1a1a' : '#e8e0d5'}`,
-                        background: orderType === t ? '#1a1a1a' : 'transparent',
+                        border: `1.5px solid ${orderType === t ? '#1c1815' : '#ddd2c4'}`,
+                        background: orderType === t ? '#1c1815' : 'transparent',
                         cursor: 'pointer', textAlign: 'center', transition: 'all 0.15s',
                       }}>
-                      <div style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.5px', color: orderType === t ? '#fff' : '#1a1a1a' }}>
+                      <div style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.5px', color: orderType === t ? '#fff' : '#1c1815' }}>
                         {t === 'delivery' ? 'Delivery' : 'Pickup'}
                       </div>
                       <div style={{ fontSize: '11px', color: orderType === t ? 'rgba(255,255,255,0.6)' : '#bbb', marginTop: '4px' }}>
@@ -281,12 +281,12 @@ export default function CheckoutPage() {
                         {errorText('address_postal')}
                       </div>
                     </div>
-                    <p style={{ marginTop: '20px', fontSize: '13px', color: '#e85d04' }}>Estimated delivery: <strong>35–45 minutes</strong></p>
+                    <p style={{ marginTop: '20px', fontSize: '13px', color: '#6e2a32' }}>Estimated delivery: <strong>35–45 minutes</strong></p>
                   </div>
                 ) : (
-                  <div style={{ marginBottom: '56px', borderLeft: '3px solid #1a1a1a', paddingLeft: '24px' }}>
-                    <p style={{ fontWeight: 600, fontSize: '15px', color: '#1a1a1a', marginBottom: '6px' }}>1420 Rue Peel, Montréal, QC H3A 1S8</p>
-                    <p style={{ color: '#e85d04', fontSize: '13px' }}>Ready in: <strong>20–25 minutes</strong></p>
+                  <div style={{ marginBottom: '56px', borderLeft: '3px solid #1c1815', paddingLeft: '24px' }}>
+                    <p style={{ fontWeight: 600, fontSize: '15px', color: '#1c1815', marginBottom: '6px' }}>1420 Rue Peel, Montréal, QC H3A 1S8</p>
+                    <p style={{ color: '#6e2a32', fontSize: '13px' }}>Ready in: <strong>20–25 minutes</strong></p>
                   </div>
                 )}
 
@@ -297,19 +297,19 @@ export default function CheckoutPage() {
                       style={{
                         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                         padding: '20px 24px',
-                        border: `1.5px solid ${paymentMethod === pm.id ? '#1a1a1a' : '#e8e0d5'}`,
-                        background: paymentMethod === pm.id ? '#1a1a1a' : 'transparent',
+                        border: `1.5px solid ${paymentMethod === pm.id ? '#1c1815' : '#ddd2c4'}`,
+                        background: paymentMethod === pm.id ? '#1c1815' : 'transparent',
                         cursor: 'pointer', transition: 'all 0.15s',
                       }}>
                       <div>
-                        <div style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.5px', color: paymentMethod === pm.id ? '#fff' : '#1a1a1a' }}>{pm.name}</div>
+                        <div style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.5px', color: paymentMethod === pm.id ? '#fff' : '#1c1815' }}>{pm.name}</div>
                         <div style={{ fontSize: '12px', color: paymentMethod === pm.id ? 'rgba(255,255,255,0.6)' : '#bbb', marginTop: '4px' }}>{pm.desc}</div>
                       </div>
                       {paymentMethod === pm.id && <span style={{ color: '#fff', fontWeight: 700 }}>✓</span>}
                     </div>
                   ))}
                 </div>
-                {fieldErrors.payment_method && <p style={{ fontSize: '12px', color: '#e85d04', marginBottom: '48px' }}>{fieldErrors.payment_method}</p>}
+                {fieldErrors.payment_method && <p style={{ fontSize: '12px', color: '#6e2a32', marginBottom: '48px' }}>{fieldErrors.payment_method}</p>}
 
                 {sectionLabel('Special instructions')}
                 <div style={{ marginBottom: '56px' }}>
@@ -319,9 +319,9 @@ export default function CheckoutPage() {
                 </div>
 
                 <button type="submit" disabled={loading}
-                  style={{ alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: '12px', background: '#1a1a1a', color: '#fff', padding: '18px 48px', border: 'none', fontSize: '13px', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: "'DM Sans', sans-serif", opacity: loading ? 0.6 : 1, transition: 'background 0.2s' }}
-                  onMouseEnter={e => { if (!loading) e.currentTarget.style.background = '#e85d04' }}
-                  onMouseLeave={e => { e.currentTarget.style.background = '#1a1a1a' }}>
+                  style={{ alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: '12px', background: '#1c1815', color: '#fff', padding: '18px 48px', border: 'none', fontSize: '13px', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: "'Jost', sans-serif", opacity: loading ? 0.6 : 1, transition: 'background 0.2s' }}
+                  onMouseEnter={e => { if (!loading) e.currentTarget.style.background = '#6e2a32' }}
+                  onMouseLeave={e => { e.currentTarget.style.background = '#1c1815' }}>
                   {loading ? 'Placing order' : `Place order — $${total.toFixed(2)} CAD`} <span style={{ fontSize: '18px' }}>→</span>
                 </button>
                 <p style={{ fontSize: '12px', color: '#bbb', marginTop: '16px' }}>Secured · 256-bit SSL encryption</p>
@@ -335,13 +335,13 @@ export default function CheckoutPage() {
                     <div style={{ position: 'relative', flexShrink: 0 }}>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={item.img} alt={item.name} style={{ width: '52px', height: '52px', objectFit: 'cover' }} />
-                      <span style={{ position: 'absolute', top: '-6px', right: '-6px', background: '#1a1a1a', color: '#fff', fontSize: '10px', fontWeight: 700, width: '18px', height: '18px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{item.qty}</span>
+                      <span style={{ position: 'absolute', top: '-6px', right: '-6px', background: '#1c1815', color: '#fff', fontSize: '10px', fontWeight: 700, width: '18px', height: '18px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{item.qty}</span>
                     </div>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: '13px', fontWeight: 600, color: '#1a1a1a', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.name}</div>
+                      <div style={{ fontSize: '13px', fontWeight: 600, color: '#1c1815', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.name}</div>
                       <div style={{ fontSize: '12px', color: '#bbb' }}>${item.price.toFixed(2)} each</div>
                     </div>
-                    <div style={{ fontWeight: 700, fontSize: '14px', color: '#1a1a1a' }}>${(item.price * item.qty).toFixed(2)}</div>
+                    <div style={{ fontWeight: 700, fontSize: '14px', color: '#1c1815' }}>${(item.price * item.qty).toFixed(2)}</div>
                   </div>
                 ))}
 
@@ -356,24 +356,24 @@ export default function CheckoutPage() {
                       style={{ ...fieldStyle('promo'), flex: 1 }}
                     />
                     <button type="button" onClick={handleApplyPromo} disabled={promoLoading}
-                      style={{ background: 'transparent', border: '1.5px solid #1a1a1a', color: '#1a1a1a', padding: '0 18px', fontSize: '12px', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', cursor: 'pointer', height: '42px' }}>
+                      style={{ background: 'transparent', border: '1.5px solid #1c1815', color: '#1c1815', padding: '0 18px', fontSize: '12px', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', cursor: 'pointer', height: '42px' }}>
                       {promoLoading ? '...' : 'Apply'}
                     </button>
                   </div>
                   {promoMsg && (
-                    <p style={{ fontSize: '12px', marginTop: '8px', color: promoOk ? '#2e7d32' : '#e85d04' }}>{promoMsg}</p>
+                    <p style={{ fontSize: '12px', marginTop: '8px', color: promoOk ? '#2e7d32' : '#6e2a32' }}>{promoMsg}</p>
                   )}
                 </div>
 
                 <div style={{ marginTop: '24px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#888' }}><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#8a7d6e' }}><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
                   {discount > 0 && (
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#2e7d32' }}><span>Discount</span><span>−${discount.toFixed(2)}</span></div>
                   )}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#888' }}><span>Delivery</span><span>{delivery === 0 ? 'Free' : `$${delivery.toFixed(2)}`}</span></div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#888' }}><span>Taxes (14.975%)</span><span>${taxes.toFixed(2)}</span></div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '16px', borderTop: '1.5px solid #1a1a1a', fontSize: '20px', fontWeight: 700, fontFamily: "'Playfair Display', serif" }}>
-                    <span>Total</span><span style={{ color: '#e85d04' }}>${total.toFixed(2)}</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#8a7d6e' }}><span>Delivery</span><span>{delivery === 0 ? 'Free' : `$${delivery.toFixed(2)}`}</span></div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#8a7d6e' }}><span>Taxes (14.975%)</span><span>${taxes.toFixed(2)}</span></div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '16px', borderTop: '1.5px solid #1c1815', fontSize: '20px', fontWeight: 700, fontFamily: "'Playfair Display', serif" }}>
+                    <span>Total</span><span style={{ color: '#6e2a32' }}>${total.toFixed(2)}</span>
                   </div>
                 </div>
               </div>

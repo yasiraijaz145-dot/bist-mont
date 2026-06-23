@@ -60,7 +60,7 @@ export default function AboutPage() {
           />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.65) 100%)' }} />
           <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '60px' }}>
-            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '16px' }}>Est. 2009</p>
+            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#6e2a32', marginBottom: '16px' }}>Est. 2009</p>
             <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(3rem, 7vw, 6rem)', fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: '20px', letterSpacing: '-1px' }}>
               Our Story
             </h1>
@@ -72,29 +72,29 @@ export default function AboutPage() {
 
         {/* Story section */}
         <section style={{ maxWidth: '800px', margin: '0 auto', padding: '100px 40px' }}>
-          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '32px' }}>The Beginning</p>
-          <p style={{ fontSize: '20px', color: '#1a1a1a', lineHeight: 1.8, marginBottom: '28px', fontFamily: "'Playfair Display', serif", fontWeight: 400 }}>
+          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#6e2a32', marginBottom: '32px' }}>The Beginning</p>
+          <p style={{ fontSize: '20px', color: '#1c1815', lineHeight: 1.8, marginBottom: '28px', fontFamily: "'Playfair Display', serif", fontWeight: 400 }}>
             In 2009, Chef Antoine Mercier left a celebrated career in Paris to come home to Montréal with a single ambition: to cook the food he grew up dreaming about.
           </p>
-          <p style={{ fontSize: '17px', color: '#555', lineHeight: 1.8, marginBottom: '28px' }}>
+          <p style={{ fontSize: '17px', color: '#6f6358', lineHeight: 1.8, marginBottom: '28px' }}>
             He found a narrow building on Rue Peel, painted the walls white, sourced three local farmers willing to work with an unknown chef, and opened with fourteen tables. The reservation list filled within a week.
           </p>
-          <p style={{ fontSize: '17px', color: '#555', lineHeight: 1.8 }}>
+          <p style={{ fontSize: '17px', color: '#6f6358', lineHeight: 1.8 }}>
             Fifteen years later, Bistro Montréal works with over fifteen Québec farms and producers, and the philosophy remains unchanged: let the season decide the menu.
           </p>
 
           {/* Pull quote */}
-          <div style={{ margin: '64px 0', borderLeft: '4px solid #e85d04', paddingLeft: '40px' }}>
-            <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '4rem', color: '#e85d04', lineHeight: 0.5, marginBottom: '20px', opacity: 0.5 }}>&ldquo;</div>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontStyle: 'italic', color: '#1a1a1a', lineHeight: 1.4, marginBottom: '20px' }}>
+          <div style={{ margin: '64px 0', borderLeft: '4px solid #6e2a32', paddingLeft: '40px' }}>
+            <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '4rem', color: '#6e2a32', lineHeight: 0.5, marginBottom: '20px', opacity: 0.5 }}>&ldquo;</div>
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontStyle: 'italic', color: '#1c1815', lineHeight: 1.4, marginBottom: '20px' }}>
               The best dish I can make is the one where the ingredient does the talking and I get out of the way.
             </p>
-            <div style={{ fontSize: '13px', fontWeight: 700, color: '#e85d04', letterSpacing: '1px' }}>— Antoine Mercier, Executive Chef</div>
+            <div style={{ fontSize: '13px', fontWeight: 700, color: '#6e2a32', letterSpacing: '1px' }}>— Antoine Mercier, Executive Chef</div>
           </div>
         </section>
 
         {/* Photo gallery */}
-        <section style={{ background: '#f9f5f0', padding: '0' }}>
+        <section style={{ background: '#f7f2ec', padding: '0' }}>
           <div className="about-gallery-grid">
             {GALLERY.map((src, i) => (
               // eslint-disable-next-line @next/next/no-img-element
@@ -110,8 +110,8 @@ export default function AboutPage() {
 
         {/* Team */}
         <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '100px 40px' }}>
-          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', textAlign: 'center', marginBottom: '16px' }}>The People</p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#1a1a1a', textAlign: 'center', marginBottom: '60px' }}>
+          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#6e2a32', textAlign: 'center', marginBottom: '16px' }}>The People</p>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#1c1815', textAlign: 'center', marginBottom: '60px' }}>
             Behind every plate
           </h2>
           <div className="about-team-grid">
@@ -123,8 +123,8 @@ export default function AboutPage() {
                   alt={name}
                   style={{ width: '100%', height: '360px', objectFit: 'cover', display: 'block', marginBottom: '24px', filter: 'grayscale(20%)' }}
                 />
-                <p style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '6px' }}>{title}</p>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.4rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '12px' }}>{name}</h3>
+                <p style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#6e2a32', marginBottom: '6px' }}>{title}</p>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.4rem', fontWeight: 700, color: '#1c1815', marginBottom: '12px' }}>{name}</h3>
                 <p style={{ fontSize: '14px', color: '#666', lineHeight: 1.7 }}>{bio}</p>
               </div>
             ))}
@@ -132,9 +132,9 @@ export default function AboutPage() {
         </section>
 
         {/* Awards / Press */}
-        <section style={{ background: '#1a1a1a', padding: '80px 0' }}>
+        <section style={{ background: '#1c1815', padding: '80px 0' }}>
           <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
-            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', textAlign: 'center', marginBottom: '16px' }}>Recognition</p>
+            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#6e2a32', textAlign: 'center', marginBottom: '16px' }}>Recognition</p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#fff', textAlign: 'center', marginBottom: '48px' }}>
               As seen in
             </h2>
@@ -151,8 +151,8 @@ export default function AboutPage() {
                 { stat: '15+', label: 'Local farm partners' },
                 { stat: '4.8★', label: 'Average guest rating' },
               ].map(({ stat, label }) => (
-                <div key={label} style={{ padding: '40px 32px', textAlign: 'center', background: '#1a1a1a' }}>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '3rem', fontWeight: 700, color: '#e85d04', marginBottom: '8px' }}>{stat}</div>
+                <div key={label} style={{ padding: '40px 32px', textAlign: 'center', background: '#1c1815' }}>
+                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '3rem', fontWeight: 700, color: '#6e2a32', marginBottom: '8px' }}>{stat}</div>
                   <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)' }}>{label}</div>
                 </div>
               ))}
@@ -161,17 +161,17 @@ export default function AboutPage() {
         </section>
 
         {/* Reservation CTA */}
-        <section style={{ background: '#f9f5f0', padding: '80px 40px', textAlign: 'center' }}>
-          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '16px' }}>Join Us</p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#1a1a1a', marginBottom: '16px' }}>
+        <section style={{ background: '#f7f2ec', padding: '80px 40px', textAlign: 'center' }}>
+          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#6e2a32', marginBottom: '16px' }}>Join Us</p>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#1c1815', marginBottom: '16px' }}>
             Come experience it for yourself.
           </h2>
-          <p style={{ fontSize: '16px', color: '#888', marginBottom: '40px' }}>
+          <p style={{ fontSize: '16px', color: '#8a7d6e', marginBottom: '40px' }}>
             Reservations open seven days a week from 5 PM.
           </p>
           <Link href="/reservations" style={{
             display: 'inline-block',
-            background: '#1a1a1a',
+            background: '#1c1815',
             color: '#fff',
             padding: '16px 40px',
             fontSize: '13px',

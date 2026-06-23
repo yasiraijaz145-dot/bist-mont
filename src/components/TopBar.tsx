@@ -89,7 +89,7 @@ export default function TopBar() {
             ))}
             <Link href="/reservations" style={{
               marginLeft: 'auto',
-              background: '#e85d04',
+              background: '#6e2a32',
               color: '#fff',
               padding: '8px 20px',
               borderRadius: '6px',
@@ -145,7 +145,7 @@ export default function TopBar() {
               onClick={() => setMobileOpen(false)}
               style={{
                 display: 'block',
-                background: '#e85d04',
+                background: '#6e2a32',
                 color: '#fff',
                 padding: '16px 24px',
                 borderRadius: '8px',

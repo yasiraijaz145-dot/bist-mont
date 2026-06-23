@@ -62,7 +62,7 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
                   style={{
                     display: 'inline-block',
                     background: '#fff',
-                    color: '#1a1a1a',
+                    color: '#1c1815',
                     padding: '12px 24px',
                     fontSize: '12px',
                     fontWeight: 800,

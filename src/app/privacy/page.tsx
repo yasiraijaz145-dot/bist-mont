@@ -14,8 +14,8 @@ export default function PrivacyPage() {
       <TopBar />
       <main style={{ paddingTop: '110px', background: '#fff' }}>
         <div style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 40px 120px' }}>
-          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#e85d04', marginBottom: '20px' }}>Legal</p>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, color: '#1a1a1a', marginBottom: '12px' }}>Privacy Policy</h1>
+          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: '#6e2a32', marginBottom: '20px' }}>Legal</p>
+          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, color: '#1c1815', marginBottom: '12px' }}>Privacy Policy</h1>
           <p style={{ fontSize: '14px', color: '#bbb', marginBottom: '48px' }}>Last updated: {new Date().getFullYear()}</p>
 
           {[
@@ -49,8 +49,8 @@ export default function PrivacyPage() {
             },
           ].map(({ title, body }) => (
             <div key={title} style={{ marginBottom: '40px' }}>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '12px' }}>{title}</h2>
-              <p style={{ fontSize: '15px', color: '#555', lineHeight: 1.8 }}>{body}</p>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', fontWeight: 700, color: '#1c1815', marginBottom: '12px' }}>{title}</h2>
+              <p style={{ fontSize: '15px', color: '#6f6358', lineHeight: 1.8 }}>{body}</p>
             </div>
           ))}
         </div>

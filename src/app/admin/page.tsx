@@ -27,20 +27,20 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
   }
 
   return (
-    <div style={{minHeight:'100vh',display:'flex',alignItems:'center',justifyContent:'center',background:'#f9f5f0',fontFamily:"'DM Sans',sans-serif"}}>
+    <div style={{minHeight:'100vh',display:'flex',alignItems:'center',justifyContent:'center',background:'#f7f2ec',fontFamily:"'Jost',sans-serif"}}>
       <div style={{background:'#fff',borderRadius:16,padding:'48px 40px',boxShadow:'0 8px 40px rgba(0,0,0,0.10)',width:'100%',maxWidth:400}}>
         <div style={{textAlign:'center',marginBottom:32}}>
           <div style={{fontSize:36}}>🍽️</div>
-          <h1 style={{fontFamily:"'Playfair Display',serif",fontSize:28,color:'#1a1a1a',margin:'8px 0 0'}}>Bistro Montréal</h1>
-          <p style={{color:'#888',marginTop:6,fontSize:14}}>Admin Panel</p>
+          <h1 style={{fontFamily:"'Playfair Display',serif",fontSize:28,color:'#1c1815',margin:'8px 0 0'}}>Bistro Montréal</h1>
+          <p style={{color:'#8a7d6e',marginTop:6,fontSize:14}}>Admin Panel</p>
         </div>
         <form onSubmit={handleSubmit}>
-          <label style={{display:'block',fontSize:13,fontWeight:600,color:'#555',marginBottom:6}}>Username</label>
-          <input style={{width:'100%',padding:'10px 14px',borderRadius:8,border:'1px solid #e8e0d5',fontSize:15,boxSizing:'border-box' as const}} type="text" value={username} onChange={e => setUsername(e.target.value)} required />
-          <label style={{display:'block',fontSize:13,fontWeight:600,color:'#555',margin:'16px 0 6px'}}>Password</label>
-          <input style={{width:'100%',padding:'10px 14px',borderRadius:8,border:'1px solid #e8e0d5',fontSize:15,boxSizing:'border-box' as const}} type="password" value={password} onChange={e => setPassword(e.target.value)} required />
-          {error && <p style={{color:'#c0392b',fontSize:13,marginTop:12}}>{error}</p>}
-          <button type="submit" disabled={loading} style={{width:'100%',marginTop:24,padding:'12px',background:'#e85d04',color:'#fff',border:'none',borderRadius:8,fontSize:16,fontWeight:600,cursor:'pointer'}}>
+          <label style={{display:'block',fontSize:13,fontWeight:600,color:'#6f6358',marginBottom:6}}>Username</label>
+          <input style={{width:'100%',padding:'10px 14px',borderRadius:8,border:'1px solid #ddd2c4',fontSize:15,boxSizing:'border-box' as const}} type="text" value={username} onChange={e => setUsername(e.target.value)} required />
+          <label style={{display:'block',fontSize:13,fontWeight:600,color:'#6f6358',margin:'16px 0 6px'}}>Password</label>
+          <input style={{width:'100%',padding:'10px 14px',borderRadius:8,border:'1px solid #ddd2c4',fontSize:15,boxSizing:'border-box' as const}} type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+          {error && <p style={{color:'#4f1d23',fontSize:13,marginTop:12}}>{error}</p>}
+          <button type="submit" disabled={loading} style={{width:'100%',marginTop:24,padding:'12px',background:'#6e2a32',color:'#fff',border:'none',borderRadius:8,fontSize:16,fontWeight:600,cursor:'pointer'}}>
             {loading ? 'Signing in…' : 'Sign In'}
           </button>
         </form>
@@ -86,38 +86,38 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
   }
 
   return (
-    <div style={{minHeight:'100vh',background:'#f9f5f0',fontFamily:"'DM Sans',sans-serif"}}>
-      <div style={{background:'#fff',borderBottom:'1px solid #e8e0d5',padding:'0 32px',display:'flex',alignItems:'center',justifyContent:'space-between',height:64,boxShadow:'0 2px 12px rgba(0,0,0,0.05)'}}>
-        <span style={{fontFamily:"'Playfair Display',serif",fontSize:20,fontWeight:700}}>🍽️ Bistro Montréal <span style={{color:'#e85d04',fontSize:14,fontWeight:500}}>Admin</span></span>
-        <button onClick={logout} style={{background:'none',border:'1px solid #e8e0d5',borderRadius:8,padding:'6px 16px',cursor:'pointer',fontSize:13,color:'#555'}}>Sign out</button>
+    <div style={{minHeight:'100vh',background:'#f7f2ec',fontFamily:"'Jost',sans-serif"}}>
+      <div style={{background:'#fff',borderBottom:'1px solid #ddd2c4',padding:'0 32px',display:'flex',alignItems:'center',justifyContent:'space-between',height:64,boxShadow:'0 2px 12px rgba(0,0,0,0.05)'}}>
+        <span style={{fontFamily:"'Playfair Display',serif",fontSize:20,fontWeight:700}}>🍽️ Bistro Montréal <span style={{color:'#6e2a32',fontSize:14,fontWeight:500}}>Admin</span></span>
+        <button onClick={logout} style={{background:'none',border:'1px solid #ddd2c4',borderRadius:8,padding:'6px 16px',cursor:'pointer',fontSize:13,color:'#6f6358'}}>Sign out</button>
       </div>
       <div style={{maxWidth:1100,margin:'0 auto',padding:'32px 24px'}}>
         {stats && (
           <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:16,marginBottom:28}}>
             {([{label:'Total',value:stats.total,icon:'📬'},{label:'Unread',value:stats.unread,icon:'🔴',hi:stats.unread>0},{label:'Today',value:stats.today,icon:'📅'}] as any[]).map(s => (
-              <div key={s.label} style={{background:'#fff',borderRadius:12,padding:'20px 24px',boxShadow:'0 2px 12px rgba(0,0,0,0.05)',borderLeft:`4px solid ${s.hi?'#e85d04':'transparent'}`}}>
+              <div key={s.label} style={{background:'#fff',borderRadius:12,padding:'20px 24px',boxShadow:'0 2px 12px rgba(0,0,0,0.05)',borderLeft:`4px solid ${s.hi?'#6e2a32':'transparent'}`}}>
                 <div style={{fontSize:24}}>{s.icon}</div>
-                <div style={{fontSize:32,fontWeight:700,color:s.hi?'#e85d04':'#1a1a1a'}}>{s.value}</div>
-                <div style={{fontSize:13,color:'#888'}}>{s.label}</div>
+                <div style={{fontSize:32,fontWeight:700,color:s.hi?'#6e2a32':'#1c1815'}}>{s.value}</div>
+                <div style={{fontSize:13,color:'#8a7d6e'}}>{s.label}</div>
               </div>
             ))}
           </div>
         )}
         <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:16}}>
           <h2 style={{fontSize:18,fontWeight:600,margin:0}}>Contact Submissions</h2>
-          <button onClick={load} style={{padding:'6px 14px',background:'none',border:'1px solid #e8e0d5',borderRadius:8,cursor:'pointer',fontSize:13,color:'#555'}}>↻ Refresh</button>
+          <button onClick={load} style={{padding:'6px 14px',background:'none',border:'1px solid #ddd2c4',borderRadius:8,cursor:'pointer',fontSize:13,color:'#6f6358'}}>↻ Refresh</button>
         </div>
-        {loading ? <p style={{color:'#888',textAlign:'center',padding:48}}>Loading…</p> : submissions.length === 0 ? <p style={{color:'#888',textAlign:'center',padding:48}}>No messages yet.</p> : (
+        {loading ? <p style={{color:'#8a7d6e',textAlign:'center',padding:48}}>Loading…</p> : submissions.length === 0 ? <p style={{color:'#8a7d6e',textAlign:'center',padding:48}}>No messages yet.</p> : (
           <div style={{display:'grid',gridTemplateColumns:selected?'1fr 1fr':'1fr',gap:16}}>
             <div style={{display:'flex',flexDirection:'column',gap:8}}>
               {submissions.map(s => (
                 <div key={s.id} onClick={() => { setSelected(s); if (!s.is_read) markRead(s.id, true) }}
-                  style={{background:'#fff',borderRadius:10,padding:'14px 18px',cursor:'pointer',borderLeft:`4px solid ${s.is_read?'transparent':'#e85d04'}`,boxShadow:selected?.id===s.id?'0 0 0 2px #e85d04':'0 2px 8px rgba(0,0,0,0.05)'}}>
+                  style={{background:'#fff',borderRadius:10,padding:'14px 18px',cursor:'pointer',borderLeft:`4px solid ${s.is_read?'transparent':'#6e2a32'}`,boxShadow:selected?.id===s.id?'0 0 0 2px #6e2a32':'0 2px 8px rgba(0,0,0,0.05)'}}>
                   <div style={{display:'flex',justifyContent:'space-between'}}>
-                    <strong style={{fontSize:14,color:s.is_read?'#555':'#1a1a1a'}}>{!s.is_read&&'● '}{s.name}</strong>
+                    <strong style={{fontSize:14,color:s.is_read?'#6f6358':'#1c1815'}}>{!s.is_read&&'● '}{s.name}</strong>
                     <span style={{fontSize:11,color:'#aaa'}}>{new Date(s.created_at).toLocaleDateString()}</span>
                   </div>
-                  <div style={{fontSize:12,color:'#888',marginTop:2}}>{s.email}</div>
+                  <div style={{fontSize:12,color:'#8a7d6e',marginTop:2}}>{s.email}</div>
                   <div style={{fontSize:13,color:'#666',marginTop:4,overflow:'hidden',whiteSpace:'nowrap',textOverflow:'ellipsis'}}>{s.message}</div>
                 </div>
               ))}
@@ -126,17 +126,17 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
               <div style={{background:'#fff',borderRadius:12,padding:24,boxShadow:'0 2px 16px rgba(0,0,0,0.07)',height:'fit-content',position:'sticky',top:24}}>
                 <div style={{display:'flex',justifyContent:'space-between',marginBottom:20}}>
                   <h3 style={{margin:0}}>{selected.name}</h3>
-                  <button onClick={() => setSelected(null)} style={{background:'none',border:'none',fontSize:18,cursor:'pointer',color:'#888'}}>✕</button>
+                  <button onClick={() => setSelected(null)} style={{background:'none',border:'none',fontSize:18,cursor:'pointer',color:'#8a7d6e'}}>✕</button>
                 </div>
-                <p style={{fontSize:14,marginBottom:8}}><strong style={{color:'#888',fontSize:12,marginRight:12}}>Email</strong><a href={`mailto:${selected.email}`} style={{color:'#e85d04'}}>{selected.email}</a></p>
-                {selected.phone && <p style={{fontSize:14,marginBottom:8}}><strong style={{color:'#888',fontSize:12,marginRight:12}}>Phone</strong>{selected.phone}</p>}
-                <p style={{fontSize:14,marginBottom:8}}><strong style={{color:'#888',fontSize:12,marginRight:12}}>Date</strong>{new Date(selected.created_at).toLocaleString()}</p>
-                <div style={{background:'#f9f5f0',borderRadius:8,padding:16,marginTop:16,fontSize:14,lineHeight:1.6,whiteSpace:'pre-wrap'}}>{selected.message}</div>
+                <p style={{fontSize:14,marginBottom:8}}><strong style={{color:'#8a7d6e',fontSize:12,marginRight:12}}>Email</strong><a href={`mailto:${selected.email}`} style={{color:'#6e2a32'}}>{selected.email}</a></p>
+                {selected.phone && <p style={{fontSize:14,marginBottom:8}}><strong style={{color:'#8a7d6e',fontSize:12,marginRight:12}}>Phone</strong>{selected.phone}</p>}
+                <p style={{fontSize:14,marginBottom:8}}><strong style={{color:'#8a7d6e',fontSize:12,marginRight:12}}>Date</strong>{new Date(selected.created_at).toLocaleString()}</p>
+                <div style={{background:'#f7f2ec',borderRadius:8,padding:16,marginTop:16,fontSize:14,lineHeight:1.6,whiteSpace:'pre-wrap'}}>{selected.message}</div>
                 <div style={{display:'flex',gap:10,marginTop:20}}>
-                  <button onClick={() => markRead(selected.id,!selected.is_read)} style={{padding:'6px 14px',background:'none',border:'1px solid #e8e0d5',borderRadius:8,cursor:'pointer',fontSize:13,color:'#555'}}>
+                  <button onClick={() => markRead(selected.id,!selected.is_read)} style={{padding:'6px 14px',background:'none',border:'1px solid #ddd2c4',borderRadius:8,cursor:'pointer',fontSize:13,color:'#6f6358'}}>
                     {selected.is_read?'◯ Mark unread':'✓ Mark read'}
                   </button>
-                  <button onClick={() => deleteMsg(selected.id)} style={{padding:'6px 14px',background:'none',border:'1px solid #c0392b',borderRadius:8,cursor:'pointer',fontSize:13,color:'#c0392b'}}>
+                  <button onClick={() => deleteMsg(selected.id)} style={{padding:'6px 14px',background:'none',border:'1px solid #4f1d23',borderRadius:8,cursor:'pointer',fontSize:13,color:'#4f1d23'}}>
                     🗑 Delete
                   </button>
                 </div>
@@ -152,6 +152,6 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
 export default function AdminPage() {
   const [authed, setAuthed] = useState<boolean | null>(null)
   useEffect(() => { fetch('/api/admin/root').then(r => setAuthed(r.status !== 401)) }, [])
-  if (authed === null) return <div style={{minHeight:'100vh',display:'flex',alignItems:'center',justifyContent:'center',color:'#888'}}>Checking session…</div>
+  if (authed === null) return <div style={{minHeight:'100vh',display:'flex',alignItems:'center',justifyContent:'center',color:'#8a7d6e'}}>Checking session…</div>
   return authed ? <Dashboard onLogout={() => setAuthed(false)} /> : <LoginForm onLogin={() => setAuthed(true)} />
 }
